@@ -5,7 +5,6 @@ using System.Xml.Linq;
 
 namespace Pylypeiev.Extensions
 {
-
     public static class XmlExtensions
     {
         public static XmlDocument ToXmlDocument(this XDocument xDocument)
