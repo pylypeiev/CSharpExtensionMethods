@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Pylypeiev.Extensions</id>
+    <version>1.0.1</version>
+    <authors>Yakov Pylypeiev</authors>
+    <owners>Yakov Pylypeiev</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
+    <description>My C# extension methods for various objets</description>
+    <releaseNotes>Init</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+  </metadata>
+</package>
