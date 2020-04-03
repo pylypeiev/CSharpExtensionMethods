@@ -2,14 +2,20 @@
 <package >
   <metadata>
     <id>Pylypeiev.Extensions</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>Yakov Pylypeiev</authors>
     <owners>Yakov Pylypeiev</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
     <description>My C# extension methods for various objets</description>
-    <releaseNotes>Init</releaseNotes>
+    <releaseNotes>Newtonsoft.JSON removed</releaseNotes>
     <copyright>Copyright 2020</copyright>
+	 <dependencies>
+      <group targetFramework=".NETFramework4.5.1" />
+    </dependencies>
   </metadata>
+   <files>
+    <file src="Pylypeiev.Extensions\bin\Release\*.*" target="lib/net451" />
+  </files>
 </package>
