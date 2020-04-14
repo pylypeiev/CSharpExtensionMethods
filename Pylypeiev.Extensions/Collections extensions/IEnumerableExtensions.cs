@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Pylypeiev.Extensions
 {
-    public static class CollectionExtensions
+    public static class IEnumerableExtensions
     {
-        #region IEnumerable Extensions
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
             foreach (T item in collection)
@@ -53,50 +52,29 @@ namespace Pylypeiev.Extensions
                 yield return item;
         }
 
-        #endregion
-
-        #region Array Extensions
-        public static string Join(this Array array, string separator)
+        public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
         {
-            return string.Join(separator, array);
+            return !enumerable.Any();
         }
 
-        #endregion
-
-        #region ICollection Extensions
-        public static bool IsNullOrEmpty(this ICollection obj)
+        public static bool IsNotEmpty<T>(this IEnumerable<T> enumerable)
         {
-            return obj == null || obj.Count == 0;
+            return enumerable.Any();
         }
 
-        #endregion
-
-        #region IList Extensions
-
-        public static IList<T> Clone<T>(this IList<T> list) where T : ICloneable
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
         {
-            var cloned = new List<T>(list.Count);
-            foreach (var item in list)
-                cloned.Add((T)item.Clone());
-
-            return cloned;
+            return enumerable?.Any() != true;
         }
 
-        public static TList Push<TList, TItem>(this TList list, TItem item) where TList : IList<TItem>
+        public static string Concatenate(this IEnumerable<string> enumerable)
         {
-            list.Add(item);
-            return list;
-        }
+            var sb = new StringBuilder();
 
-        public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
-        {
-            return source
-                .Select((x, i) => new { Index = i, Value = x })
-                .GroupBy(x => x.Index / chunkSize)
-                .Select(x => x.Select(v => v.Value).ToList())
-                .ToList();
-        }
+            foreach (var s in enumerable)
+                sb.Append(s);
 
-        #endregion
+            return sb.ToString();
+        }
     }
 }
