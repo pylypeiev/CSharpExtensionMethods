@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Pylypeiev.Extensions
 {
@@ -40,6 +38,14 @@ namespace Pylypeiev.Extensions
                 return date;
 
             return null;
+        }
+
+        public static DateTime ToDateTime(this string str, DateTime defaultValue)
+        {
+            if (DateTime.TryParse(str, out DateTime date))
+                return date;
+
+            return defaultValue;
         }
     }
 }
