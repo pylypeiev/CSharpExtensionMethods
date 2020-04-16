@@ -1,12 +1,53 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace Pylypeiev.Extensions
 {
     public static class XmlExtensions
     {
+        public static string XmlSerialize<T>(this T item)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            var stringBuilder = new StringBuilder();
+            using (StringWriter writer = new StringWriter(stringBuilder))
+            {
+                serializer.Serialize(writer, item);
+            }
+            return stringBuilder.ToString();
+        }
+
+        public static string XmlSerialize(this object item)
+        {
+            Type type = item.GetType();
+            var serializer = new XmlSerializer(type);
+            var stringBuilder = new StringBuilder();
+            using (StringWriter writer = new StringWriter(stringBuilder))
+            {
+                serializer.Serialize(writer, item);
+            }
+            return stringBuilder.ToString();
+        }
+
+        public static T TryXmlDeserialize<T>(this string xmlData, T defaultValue = default)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            using (TextReader reader = new StringReader(xmlData))
+            {
+                try
+                {
+                    return (T)serializer.Deserialize(reader);
+                }
+                catch (Exception)
+                {
+                    return !defaultValue.Equals(default) ? defaultValue : default;
+                }
+            }
+        }
+
         public static XmlDocument ToXmlDocument(this XDocument xDocument)
         {
             var xmlDocument = new XmlDocument();
