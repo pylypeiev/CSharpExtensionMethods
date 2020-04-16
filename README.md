@@ -1,5 +1,5 @@
 # CSharpExtensionMethods
 My C# Extension methods
 
-## You can install via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer:
+## You can install it via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer:
 
