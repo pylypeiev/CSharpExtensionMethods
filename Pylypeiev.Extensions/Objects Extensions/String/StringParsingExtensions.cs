@@ -25,6 +25,13 @@ namespace Pylypeiev.Extensions
             return result;
         }
 
+        public static float  ToFloat(this string input, float defaultValue = 0)
+        {
+            if (!float.TryParse(input, out float result))
+                result = defaultValue;
+            return result;
+        }
+
         public static long ToLong(this string input, long defaultValue = 0)
         {
             if (!long.TryParse(input, out long result))
