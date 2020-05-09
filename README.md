@@ -10,7 +10,8 @@ My C# Extension methods for collections and simple objects. Enjoy! :collision:
 - [ICollection](#icollection)
 - [IEnumerable](#ienumerable)
 - [IList](#ilist)
-#### Various objects extension methods:
+#### POCO extension methods:
+#### XML objects extension methods:
 
 
 ## Collections extension methods:
@@ -42,6 +43,9 @@ My C# Extension methods for collections and simple objects. Enjoy! :collision:
 <a name="ilist"></a>
 
 ### IList extension methods
+ - [Clone](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Clone an collection to new IList
+ - [Push](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Adds an object to the collection and return this collection for fluent api
+ - [ChunkBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Chunk a list to smaller lists with a maximum capacity of the chunk size
 
-
-## Various objects extension methods:
+## POCO extension methods:
+## XML objects extension methods:
