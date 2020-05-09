@@ -20,10 +20,11 @@ My C# Extension methods for collections and simple objects. Enjoy! :collision:
 - [Join](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ArrayExtensions.cs) -  Concatenates the elements of an object array, using the specified separator between each element
 - [Clear](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ArrayExtensions.cs) - Sets a range of elements in an array to the default value of each element type.
 
-
 <a name="dictionary"></a>
 
 ### Dictionary extension methods
+- [AddIfNotContainsKey](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) Add an element with provided key to dictionary if this key is not exist yet
+- [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) Add an element with provided key to dictionary, if this key is exist - update value
 
 <a name="icollection"></a>
 
