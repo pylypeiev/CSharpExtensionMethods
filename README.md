@@ -23,12 +23,17 @@ My C# Extension methods for collections and simple objects. Enjoy! :collision:
 <a name="dictionary"></a>
 
 ### Dictionary extension methods
-- [AddIfNotContainsKey](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) Add an element with provided key to dictionary if this key is not exist yet
-- [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) Add an element with provided key to dictionary, if this key is exist - update value
+- [AddIfNotContainsKey](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary if this key is not exist yet
+- [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary, if this key is exist - update value
 
 <a name="icollection"></a>
 
 ### ICollection extension methods
+- [IsNullOrEmpty](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ICollectionExtensions.cs) - Check if collection is null or empty 
+- [AddRange](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ICollectionExtensions.cs) - Adds the elements of the specified Array to the end of the collection
+- [AddIfNotContains](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ICollectionExtensions.cs) - Add an element to the end of the collection if this value is not exist yet
+- [RemoveRange](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ICollectionExtensions.cs) - Removes a range of elements from collection
+
 
 <a name="ienumerable"></a>
 
