@@ -1,5 +1,4 @@
-﻿using Pylypeiev.Extensions.Minimal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,37 +7,14 @@ namespace Pylypeiev.Extensions
 {
     public static class IEnumerableExtensions
     {
-        /// <summary>
-        /// Performs the specified action on each element of the IEnumerable
-        /// <strong>Use only if you must</strong>
-        /// </summary>
-        /// <param name="action">action to perform</param>
-        /// <exception cref="System.ArgumentNullException">action is null</exception>
-        /// <exception cref="System.InvalidOperationException">An element in the collection has been modified</exception>
-        /// <returns>this IEnuerable</returns>
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        /// <summary> Add the object top the end of IEnumerable </summary>
+        /// <param name="element">object to append</param>
+        /// <returns>updated IEnumerable</returns>
+        public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T element)
         {
-            foreach (T item in collection)
-                action(item);
-
-            return collection;
-        }
-
-        /// <summary>
-        /// Concatenates the elements of an IEnumerable, using the specified separator between each element
-        /// </summary>
-        /// <param name="separator">
-        /// The string to use as a separator. separator is included in the returned string
-        /// only if values has more than one element/
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">if values is null</exception>
-        /// <returns>
-        /// A string that consists of the elements of values delimited by the separator string.
-        /// If values is an empty IEnumerable, the method returns String.Empty.
-        /// </returns>
-        public static string Join<T>(this IEnumerable<T> self, string separator)
-        {
-            return string.Join(separator, self.Select(e => e.ToString()).ToArray());
+            foreach (var item in source)
+                yield return item;
+            yield return element;
         }
 
         /// <summary> Check if all elements in IEnumerable are equals </summary>
@@ -61,24 +37,35 @@ namespace Pylypeiev.Extensions
             return true;
         }
 
-        /// <summary> Add the object top the end of IEnumerable </summary>
-        /// <param name="element">object to append</param>
-        /// <returns>updated IEnumerable</returns>
-        public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T element)
+        /// <summary>
+        /// Concatenates the elements of an IEnumerable<string> to 1 string. Uses StringBuilder
+        /// </summary>
+        /// <param name="enumerable"></param>
+        /// <returns>concatenated string</returns>
+        public static string Concatenate(this IEnumerable<string> enumerable)
         {
-            foreach (var item in source)
-                yield return item;
-            yield return element;
+            var sb = new StringBuilder();
+
+            foreach (var s in enumerable)
+                sb.Append(s);
+
+            return sb.ToString();
         }
 
-        /// <summary> Add the object at the beginning of IEnumerable </summary>
-        /// <param name="element">object to prepend</param>
-        /// <returns>updated IEnumerable</returns>
-        public static IEnumerable<T> Prepend<T>(this IEnumerable<T> source, T element)
+        /// <summary>
+        /// Performs the specified action on each element of the IEnumerable
+        /// <strong>Use only if you must</strong>
+        /// </summary>
+        /// <param name="action">action to perform</param>
+        /// <exception cref="System.ArgumentNullException">action is null</exception>
+        /// <exception cref="System.InvalidOperationException">An element in the collection has been modified</exception>
+        /// <returns>this IEnuerable</returns>
+        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            yield return element;
-            foreach (var item in source)
-                yield return item;
+            foreach (T item in collection)
+                action(item);
+
+            return collection;
         }
 
         /// <summary> Check if IEnumerable is empty </summary>
@@ -105,18 +92,30 @@ namespace Pylypeiev.Extensions
         }
 
         /// <summary>
-        /// Concatenates the elements of an IEnumerable<string> to 1 string. Uses StringBuilder
+        /// Concatenates the elements of an IEnumerable, using the specified separator between each element
         /// </summary>
-        /// <param name="enumerable"></param>
-        /// <returns>concatenated string</returns>
-        public static string Concatenate(this IEnumerable<string> enumerable)
+        /// <param name="separator">
+        /// The string to use as a separator. separator is included in the returned string
+        /// only if values has more than one element/
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">if values is null</exception>
+        /// <returns>
+        /// A string that consists of the elements of values delimited by the separator string.
+        /// If values is an empty IEnumerable, the method returns String.Empty.
+        /// </returns>
+        public static string Join<T>(this IEnumerable<T> self, string separator)
         {
-            var sb = new StringBuilder();
+            return string.Join(separator, self.Select(e => e.ToString()).ToArray());
+        }
 
-            foreach (var s in enumerable)
-                sb.Append(s);
-
-            return sb.ToString();
+        /// <summary> Add the object at the beginning of IEnumerable </summary>
+        /// <param name="element">object to prepend</param>
+        /// <returns>updated IEnumerable</returns>
+        public static IEnumerable<T> Prepend<T>(this IEnumerable<T> source, T element)
+        {
+            yield return element;
+            foreach (var item in source)
+                yield return item;
         }
     }
 }

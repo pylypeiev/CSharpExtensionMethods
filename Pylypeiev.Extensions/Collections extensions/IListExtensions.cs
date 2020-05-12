@@ -4,9 +4,20 @@ using System.Linq;
 
 namespace Pylypeiev.Extensions
 {
-
     public static class IListExtensions
     {
+        /// <summary> Chunk a list to smaller lists with a maximum capacity of the chunk size</summary>
+        /// <param name="chunkSize"> a maximum capacity of the chunk size</param>
+        /// <returns>List with chunked lists</returns>
+        public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
+        {
+            return source
+                .Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index / chunkSize)
+                .Select(x => x.Select(v => v.Value).ToList())
+                .ToList();
+        }
+
         /// <summary>Clone an collection to new IList</summary>
         /// <returns>cloned new IList</returns>
         public static IList<T> Clone<T>(this IList<T> list) where T : ICloneable
@@ -26,18 +37,6 @@ namespace Pylypeiev.Extensions
         {
             list.Add(item);
             return list;
-        }
-
-        /// <summary> Chunk a list to smaller lists with a maximum capacity of the chunk size</summary>
-        /// <param name="chunkSize"> a maximum capacity of the chunk size</param>
-        /// <returns>List with chunked lists</returns>
-        public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
-        {
-            return source
-                .Select((x, i) => new { Index = i, Value = x })
-                .GroupBy(x => x.Index / chunkSize)
-                .Select(x => x.Select(v => v.Value).ToList())
-                .ToList();
         }
     }
 }

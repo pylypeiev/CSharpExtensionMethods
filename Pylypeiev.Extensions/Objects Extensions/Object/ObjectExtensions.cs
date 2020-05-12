@@ -5,12 +5,14 @@ using System.Text;
 
 namespace Pylypeiev.Extensions
 {
-
     public static class ObjectExtensions
     {
+        /// <summary>Get properties and values of this object using reflection</summary>
+        /// <param name="obj"></param>
+        /// <returns>dictionary where key is property of object and value is value of this property</returns>
         public static Dictionary<string, string> GetPropertiesWithValues(this object obj)
         {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            var dictionary = new Dictionary<string, string>();
 
             Type objectType = obj.GetType();
 
@@ -23,6 +25,10 @@ namespace Pylypeiev.Extensions
             return dictionary;
         }
 
+        /// <summary>Get properties and values of this object using reflection</summary>
+        /// <param name="propNameValueSeparator">separator between property and value</param>
+        /// <param name="propsSeparator">separator between different properties</param>
+        /// <returns>string with properties and values separated with provided symbols</returns>
         public static string GetPropertiesWithValues(this object obj, string propNameValueSeparator = " = ", string propsSeparator = ", ")
         {
             var sb = new StringBuilder();

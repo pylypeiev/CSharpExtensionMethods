@@ -5,18 +5,18 @@ namespace Pylypeiev.Extensions
 {
     public static class ICollectionExtensions
     {
-        /// <summary> Check if collection is null or empty </summary>
-        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
-        public static bool IsNullOrEmpty(this ICollection obj)
+        /// <summary>Add an element to the end of the collection if this value is not exist yet</summary>
+        /// <param name="value"> The object to add</param>
+        /// <exception cref="System.NotSupportedException">collection is read only</exception>
+        /// <returns> True if added to collection, otherwise, false. </returns>
+        public static bool AddIfNotContains<T>(this ICollection<T> collection, T value)
         {
-            return obj == null || obj.Count == 0;
-        }
-
-        /// <summary> Check if collection is null or empty </summary>
-        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
-        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
-        {
-            return collection == null || collection.Count == 0;
+            if (!collection.Contains(value))
+            {
+                collection.Add(value);
+                return true;
+            }
+            return false;
         }
 
         /// <summary> Adds the elements of the specified Array to the end of the collection </summary>
@@ -37,18 +37,18 @@ namespace Pylypeiev.Extensions
                 collection.Add(value);
         }
 
-        /// <summary>Add an element to the end of the collection if this value is not exist yet</summary>
-        /// <param name="value"> The object to add</param>
-        /// <exception cref="System.NotSupportedException">collection is read only</exception>
-        /// <returns> True if added to collection, otherwise, false. </returns>
-        public static bool AddIfNotContains<T>(this ICollection<T> collection, T value)
+        /// <summary> Check if collection is null or empty </summary>
+        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
+        public static bool IsNullOrEmpty(this ICollection obj)
         {
-            if (!collection.Contains(value))
-            {
-                collection.Add(value);
-                return true;
-            }
-            return false;
+            return obj == null || obj.Count == 0;
+        }
+
+        /// <summary> Check if collection is null or empty </summary>
+        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
+        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
+        {
+            return collection == null || collection.Count == 0;
         }
 
         /// <summary>Removes a range of elements from collection</summary>

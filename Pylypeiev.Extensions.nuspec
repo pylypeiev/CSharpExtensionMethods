@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>Pylypeiev.Extensions</id>
-    <version>1.0.6</version>
+    <version>1.1.0</version>
     <authors>Yakov Pylypeiev</authors>
     <owners>Yakov Pylypeiev</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
-    <description>My C# extension methods for various objets</description>
-    <releaseNotes>string.ToFloat extension added</releaseNotes>
+    <description>My C# Extension methods for collections and POCO objects</description>
+    <releaseNotes>Added documentation for all methods. a lot of extensions methods were upgraded, some removed. Xml extensions moved to Pylypeiev.Extensions.Xml namespace</releaseNotes>
     <copyright>Copyright 2020</copyright>
 	 <dependencies>
       <group targetFramework=".NETFramework4.5.1" />

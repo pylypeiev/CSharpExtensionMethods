@@ -54,10 +54,9 @@
     <Compile Include="Objects Extensions\Double\DoubleExtensions.cs" />
     <Compile Include="Objects Extensions\Float\FloatExtensions.cs" />
     <Compile Include="Objects Extensions\Int\IntExtensions.cs" />
-    <Compile Include="Objects Extensions\DateTime\DateTimeCalculationsExtensions.cs" />
+    <Compile Include="Objects Extensions\DateTime\DateTimeExtensions.cs" />
     <Compile Include="Objects Extensions\Long\LongExtensions.cs" />
     <Compile Include="Objects Extensions\Object\ObjectExtensions.cs" />
-    <Compile Include="Objects Extensions\DateTime\DateTimeOperationsExtensions.cs" />
     <Compile Include="Objects Extensions\Object\ObjectGeneralExtensions.cs" />
     <Compile Include="Objects Extensions\String\StringEncodingExtensions.cs" />
     <Compile Include="Objects Extensions\String\StringIOExtensions.cs" />

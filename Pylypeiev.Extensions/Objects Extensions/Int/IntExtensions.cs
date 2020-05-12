@@ -4,27 +4,39 @@ namespace Pylypeiev.Extensions
 {
     public static class IntExtensions
     {
-        public static bool IsBetween(this int number, int a, int b)
-        {
-            return a <= number && number <= b;
-        }
-
-        public static int Max(this int val1, int val2)
-        {
-            return Math.Max(val1, val2);
-        }
-
-        public static int Min(this int val1, int val2)
-        {
-            return Math.Min(val1, val2);
-        }
-
+        /// <summary>
+        /// Calculate percentage from this number
+        /// </summary>
+        /// <param name="percentage">percentage number</param>
         public static double GetPercentage(this int value, int percentage)
         {
             var percentAsDouble = (double)percentage / 100;
             return value * percentAsDouble;
         }
 
+        /// <summary>Check if this number is between 2 numbers</summary>
+        /// <param name="a">lower bound</param>
+        /// <param name="b">upper bound</param>
+        /// <returns>true if between, otherwise - false</returns>
+        public static bool IsBetween(this int number, int a, int b)
+        {
+            return a <= number && number <= b;
+        }
+
+        /// <summary>Returns the larger of two numbers</summary>
+        public static int Max(this int val1, int val2)
+        {
+            return Math.Max(val1, val2);
+        }
+
+        /// <summary>Returns the smaller of two numbers</summary>
+        public static int Min(this int val1, int val2)
+        {
+            return Math.Min(val1, val2);
+        }
+
+        /// <summary>Format file size in KB/MB/GB/TB/PB/EB</summary>
+        /// <returns>string representation of file size</returns>
         public static string ToFileSize(this int size)
         {
             if (size < 1024) { return (size).ToString("F0") + " bytes"; }

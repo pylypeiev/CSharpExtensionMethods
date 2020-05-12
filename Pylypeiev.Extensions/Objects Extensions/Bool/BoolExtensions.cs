@@ -1,14 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-
-namespace Pylypeiev.Extensions
+﻿namespace Pylypeiev.Extensions
 {
     public static class BoolExtensions
     {
+        /// <summary>convert a boolean value to string representation</summary>
+        /// <param name="yes">returned string if bool is truthy</param>
+        /// <param name="no" >returned string if bool is falsy</param>
+        /// <returns>boolean value in string representation</returns>
         public static string ToYesNo(this bool b, string yes = "Yes", string no = "No")
         {
             return b ? yes : no;

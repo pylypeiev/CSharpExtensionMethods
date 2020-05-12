@@ -4,46 +4,72 @@ namespace Pylypeiev.Extensions
 {
     public static class DecimalExtensions
     {
-        public static bool IsBetween(this decimal number, decimal a, decimal b)
+        /// <summary>Returns the absolute value of this number.</summary>
+        public static decimal Abs(this decimal value)
         {
-            return a <= number && number <= b;
+            return Math.Abs(value);
         }
+
+        /// <summary>Returns the smallest integral value that is greater than or equal to the specified number</summary>
+        public static decimal Ceiling(this decimal value)
+        {
+            return Math.Ceiling(value);
+        }
+
+        /// <summary>Returns the largest integral value that is greater than or equal to the specified number</summary>
+        public static decimal Floor(this decimal value)
+        {
+            return Math.Floor(value);
+        }
+
+        /// <summary>
+        /// Calculate percentage from this number
+        /// </summary>
+        /// <param name="percentage">percentage number</param>
         public static decimal GetPercentage(this decimal value, decimal percentage)
         {
             var percentAsDouble = percentage / 100;
             return value * percentAsDouble;
         }
 
-        public static decimal Abs(this decimal value)
+        /// <summary>Check if this number is between 2 numbers</summary>
+        /// <param name="a">lower bound</param>
+        /// <param name="b">upper bound</param>
+        /// <returns>true if between, otherwise - false</returns>
+        public static bool IsBetween(this decimal number, decimal a, decimal b)
         {
-            return Math.Abs(value);
+            return a <= number && number <= b;
         }
 
-        public static decimal Ceiling(this decimal value)
-        {
-            return Math.Ceiling(value);
-        }
-        public static decimal Floor(this decimal value)
-        {
-            return Math.Floor(value);
-        }
-
+        /// <summary>Returns the larger of two numbers</summary>
         public static decimal Max(this decimal val1, decimal val2)
         {
             return Math.Max(val1, val2);
         }
 
+        /// <summary>Returns the smaller of two numbers</summary>
         public static decimal Min(this decimal val1, decimal val2)
         {
             return Math.Min(val1, val2);
         }
 
+        /// <summary>
+        ///  Rounds a decimal value to the nearest integral value, and rounds midpoint values
+        ///  to the nearest even number.
+        /// </summary>
+        /// <exception cref="System.OverflowException">The result is outside the range</exception>
         public static decimal Round(this decimal d)
         {
             return Math.Round(d);
         }
 
-        public static decimal Round(this decimal d, Int32 decimals)
+        /// <summary>
+        ///  Rounds a decimal value to the nearest integral value, and rounds midpoint values
+        ///  to the nearest even number.
+        /// </summary>
+        /// <param name="decimals">The number of decimal places in the return value.</param>
+        /// <exception cref="System.OverflowException">The result is outside the range</exception>
+        public static decimal Round(this decimal d, int decimals)
         {
             return Math.Round(d, decimals);
         }

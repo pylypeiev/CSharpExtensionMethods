@@ -2,7 +2,6 @@
 
 namespace Pylypeiev.Extensions
 {
-
     public static class DateTimeCalculationsExtensions
     {
         /// <summary>Check if date is between 2 dates. Inclusive.</summary>
@@ -21,6 +20,16 @@ namespace Pylypeiev.Extensions
             var age = DateTime.Now.Year - dateTime.Year;
             if (DateTime.Now < dateTime.AddYears(age)) age--;
             return age;
+        }
+
+        /// <summary>
+        /// Get time from this DateTime in numbers format.
+        /// </summary>
+        /// <param name="timeFormat">string format applied on DateTime, please provide only time-specified formats</param>
+        /// <returns></returns>
+        public static int GetTime(this DateTime date, string timeFormat = "HHmmss")
+        {
+            return date.ToString(timeFormat).ToInt();
         }
 
         /// <summary>Check if this date is future </summary>
@@ -51,16 +60,6 @@ namespace Pylypeiev.Extensions
         public static bool IsPast(this DateTime date)
         {
             return date.IsPast(DateTime.Now);
-        }
-
-        /// <summary>
-        /// Get time from this DateTime in numbers format.
-        /// </summary>
-        /// <param name="timeFormat">string format applied on DateTime, please provide only time-specified formats</param>
-        /// <returns></returns>
-        public static int GetTime(this DateTime date, string timeFormat = "HHmmss")
-        {
-            return date.ToString(timeFormat).ToInt();
         }
     }
 }
