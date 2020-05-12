@@ -3,7 +3,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
 ### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Minimal%20Pack.cs) a minimal pack.
-
+### [COPY2](https://raw.githubusercontent.com/pylypeiev/CSharpExtensionMethods/master/Pylypeiev.Extensions/Minimal%20Pack.cs)
 ## Table of Contents:
 #### Collections extension methods (Namespace - Pylypeiev.Extensions):
 - [Array](#array)
