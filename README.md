@@ -196,5 +196,3 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [ToStream](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/XML%20Extensions/XmlExtensions.cs) - Convert XmlDocument to Stream  
 ### Xml.Linq extension methods:
 - [ToXmlDocument](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/XML%20Extensions/XmlExtensions.cs) - Convert XDocument/XElement to XmlDocument 
-- [](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/XML%20Extensions/XmlExtensions.cs) - 
-
