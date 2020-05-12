@@ -5,11 +5,6 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 ### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Minimal%20Pack.cs) a minimal pack.
 
 
-### [COPY2](load)
-
-<a name="load" download  href="https://raw.githubusercontent.com/pylypeiev/CSharpExtensionMethods/master/Pylypeiev.Extensions/Minimal%20Pack.cs"></a>
-
-
 ## Table of Contents:
 #### Collections extension methods (Namespace - Pylypeiev.Extensions):
 - [Array](#array)
@@ -17,6 +12,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [ICollection](#icollection)
 - [IEnumerable](#ienumerable)
 - [IList](#ilist)
+
 #### POCO extension methods (Namespace - Pylypeiev.Extensions):
 - [bool](#bool)
 - [ByteArray](#byte)
@@ -28,6 +24,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [long](#long)
 - [object](#object)
 - [string](#string)
+
 #### XML extension methods (Namespace - Pylypeiev.Extensions.Xml):
 - [XML](#xml)
 
