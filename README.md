@@ -129,7 +129,6 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IsBetween](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Check if this number is between 2 numbers
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Returns the smaller of two numbers
-
 - [ToFileSize](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Format file size in KB/MB/GB/TB/PB/EB
 
 <a name="long"></a>
@@ -139,7 +138,6 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IsBetween](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Check if this number is between 2 numbers
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Returns the smaller of two numbers
-
 - [ToFileSize](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Format file size in KB/MB/GB/TB/PB/EB
 
 
@@ -164,16 +162,13 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [ToFloat](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to float
 - [ToInt](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to int
 - [ToLong](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to long
-
 - [DecodeBase64](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringEncodingExtensions.cs) - Decodes a string encoded in base-64
 - [EncodeBase64](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringEncodingExtensions.cs) - Encodes a string to its equivalent string representation that is encoded in base-64
-
 - [RemoveFirst](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the number of characters at the start of this string
 - [RemoveFirstCharacter](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the first character of this string
 - [RemoveLast](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the number of characters at the end of this string
 - [RemoveLastCharacter](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the last character of this string
 - [Reverse](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Reverse the sequence of characters in this string
-
 - [EndsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the end of this string matches the specified string
 - [EqualsIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether two specified strings have the same value
 - [IfNullThen](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if the string is null or whitespace if yes returns nullAlternateValue
@@ -189,7 +184,6 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [NthIndexOf](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the index of matched string regards to occurrenceNum
 - [OccurrenceNum](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the numbers of matches in this string
 - [StartsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the beginning of this string matches the specified string
-
 - [SaveAs](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringIOExtensions.cs) - write string to file
 
 <a name="xml"></a>
