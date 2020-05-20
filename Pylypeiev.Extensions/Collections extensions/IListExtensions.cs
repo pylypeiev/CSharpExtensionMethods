@@ -38,5 +38,32 @@ namespace Pylypeiev.Extensions
             list.Add(item);
             return list;
         }
+
+        /// <summary>
+        /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<List<T>> GetPermutations<T>(this List<T> list)
+        {
+            var result = new List<List<T>>();
+            if (list.Count == 1)
+            {
+                result.Add(list);
+                return result;
+            }
+            foreach (var element in list)
+            {
+                var remainingList = new List<T>(list);
+                remainingList.Remove(element);
+                foreach (var permutation in GetPermutations(remainingList))
+                {
+                    permutation.Add(element);
+                    result.Add(permutation);
+                }
+            }
+            return result;
+        }
     }
 }

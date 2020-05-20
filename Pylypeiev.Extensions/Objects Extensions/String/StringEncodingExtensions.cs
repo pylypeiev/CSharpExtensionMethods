@@ -22,5 +22,25 @@ namespace Pylypeiev.Extensions
 
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
         }
+
+        /// <summary>Computes MD5 hash of a string.</summary>
+        /// <param name="str">String to hash.</param>
+        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
+        /// <returns>MD5 hash in hexadecimal format. If string is null or empty - empty string</returns>
+        public static string ToMd5(this string str, Encoding encoding = null)
+        {
+            if (string.IsNullOrEmpty(str)) return string.Empty;
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            var stringBuilder = new StringBuilder(32);
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                foreach (byte num in md5.ComputeHash(encoding.GetBytes(str)))
+                    stringBuilder.Append(num.ToString("x2"));
+            }
+            return stringBuilder.ToString();
+        }
     }
 }

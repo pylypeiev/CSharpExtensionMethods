@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Pylypeiev.Extensions.Minimal
 {
@@ -1178,6 +1179,267 @@ namespace Pylypeiev.Extensions.Minimal
             if (a == null || b == null) return false;
 
             return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>Computes MD5 hash of a string.</summary>
+        /// <param name="str">String to hash.</param>
+        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
+        /// <returns>MD5 hash in hexadecimal format. If string is null or empty - empty string</returns>
+        public static string ToMd5(this string str, Encoding encoding = null)
+        {
+            if (string.IsNullOrEmpty(str)) return string.Empty;
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            var stringBuilder = new StringBuilder(32);
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                foreach (byte num in md5.ComputeHash(encoding.GetBytes(str)))
+                    stringBuilder.Append(num.ToString("x2"));
+            }
+            return stringBuilder.ToString();
+        }
+
+        /// <summary>Converts a string into an byte array.</summary>
+        /// <param name="str">A string to convert.</param>
+        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
+        /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
+        public static byte[] ToByteArray(this string str, Encoding encoding = null)
+        {
+            if (string.IsNullOrEmpty(str)) return new byte[0];
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            return encoding.GetBytes(str);
+        }
+
+        /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
+        /// <param name="item"> The instance that will be wrapped.</param>
+        /// <returns> An IEnumerable of a single item. </returns>
+        public static IEnumerable<T> Yield<T>(this T item)
+        {
+            yield return item;
+        }
+
+        /// <summary>
+        /// Determines whether two specified chars have the same value
+        /// </summary>
+        /// <param name="compareTo">The char to compare to</param>
+        /// <returns>true if have same value, otherwise - false</returns>
+        public static bool EqualsIgnoreCase(this char ch, char compareTo)
+        {
+            return char.ToUpperInvariant(ch) == char.ToUpperInvariant(compareTo);
+        }
+
+        /// <summary>
+        /// Split CamelCase words
+        /// </summary>
+        /// <returns>split words</returns>
+        public static string SplitCamelCase(this string str)
+        {
+            return Regex.Replace(str, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
+        }
+
+        /// <summary> Shuffle IEnumerable </summary>
+        /// <returns> a random shuffled IEnumerable</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            return source.OrderBy(_ => Guid.NewGuid());
+        }
+
+        /// <summary>Pick a random element from IEnumerable</summary>
+        /// <returns> 1 random element of type T </returns>
+        public static T PickRandom<T>(this IEnumerable<T> source)
+        {
+            return source.PickRandom(1).Single();
+        }
+
+        /// <summary>Pick N random elements from IEnumerable</summary>
+        /// <param name="count">number of objects of type T to pick</param>
+        /// <returns> IEnumerable collecting N random element of type T </returns>
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
+        {
+            return source.Shuffle().Take(count);
+        }
+
+        /// <summary>
+        /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<List<T>> GetPermutations<T>(this List<T> list)
+        {
+            var result = new List<List<T>>();
+            if (list.Count == 1)
+            {
+                result.Add(list);
+                return result;
+            }
+            foreach (var element in list)
+            {
+                var remainingList = new List<T>(list);
+                remainingList.Remove(element);
+                foreach (var permutation in GetPermutations(remainingList))
+                {
+                    permutation.Add(element);
+                    result.Add(permutation);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Surround this string with some string
+        /// </summary>
+        public static string SurroundWith(this string str, string surrounder)
+        {
+            return surrounder + str + surrounder;
+        }
+
+        /// <summary>
+        /// Converts the specified string to title case (except for words that are entirely in uppercase).
+        /// </summary>
+        /// <returns>The specified string converted to title case.</returns>
+        public static string ToTitleCase(this string str)
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            return cultureInfo.TextInfo.ToTitleCase(str.ToLower());
+        }
+
+        /// <summary>
+        /// Get the innermost exception from this exception
+        /// </summary>
+        /// <returns>innermost exception</returns>
+        public static Exception GetInnermostException(this Exception ex)
+        {
+            var innerMostException = ex;
+            while (innerMostException.InnerException != null)
+                innerMostException = innerMostException.InnerException;
+
+            return innerMostException;
+        }
+
+        /// <summary>Add a number to this number </summary>
+        public static decimal Plus(this decimal value, decimal value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static decimal Minus(this decimal value, decimal value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static decimal DivideBy(this decimal value, decimal value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static decimal MultiplyBy(this decimal value, decimal value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Add a number to this number </summary>
+        public static double Plus(this double value, double value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static double Minus(this double value, double value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static double DivideBy(this double value, double value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static double MultiplyBy(this double value, double value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Add a number to this number </summary>
+        public static float Plus(this float value, float value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static float Minus(this float value, float value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static float DivideBy(this float value, float value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static float MultiplyBy(this float value, float value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Add a number to this number </summary>
+        public static int Plus(this int value, int value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static int Minus(this int value, int value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static int DivideBy(this int value, int value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static int MultiplyBy(this int value, int value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Add a number to this number </summary>
+        public static long Plus(this long value, long value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static long Minus(this long value, long value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static long DivideBy(this long value, long value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static long MultiplyBy(this long value, long value2)
+        {
+            return value / value2;
         }
     }
 }

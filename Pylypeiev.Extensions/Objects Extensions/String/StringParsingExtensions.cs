@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace Pylypeiev.Extensions
 {
@@ -73,6 +75,20 @@ namespace Pylypeiev.Extensions
             if (!long.TryParse(input, out long result))
                 result = defaultValue;
             return result;
+        }
+
+        /// <summary>Converts a string into an byte array.</summary>
+        /// <param name="str">A string to convert.</param>
+        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
+        /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
+        public static byte[] ToByteArray(this string str, Encoding encoding = null)
+        {
+            if (string.IsNullOrEmpty(str)) return new byte[0];
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            return encoding.GetBytes(str);
         }
     }
 }

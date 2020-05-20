@@ -40,5 +40,29 @@ namespace Pylypeiev.Extensions
         {
             return Math.Min(val1, val2);
         }
+
+        /// <summary>Add a number to this number </summary>
+        public static float Plus(this float value, float value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static float Minus(this float value, float value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static float DivideBy(this float value, float value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static float MultiplyBy(this float value, float value2)
+        {
+            return value / value2;
+        }
     }
 }

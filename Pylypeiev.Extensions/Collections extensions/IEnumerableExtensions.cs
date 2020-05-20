@@ -117,5 +117,27 @@ namespace Pylypeiev.Extensions
             foreach (var item in source)
                 yield return item;
         }
+
+        /// <summary> Shuffle IEnumerable </summary>
+        /// <returns> a random shuffled IEnumerable</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            return source.OrderBy(_ => Guid.NewGuid());
+        }
+
+        /// <summary>Pick a random element from IEnumerable</summary>
+        /// <returns> 1 random element of type T </returns>
+        public static T PickRandom<T>(this IEnumerable<T> source)
+        {
+            return source.PickRandom(1).Single();
+        }
+
+        /// <summary>Pick N random elements from IEnumerable</summary>
+        /// <param name="count">number of objects of type T to pick</param>
+        /// <returns> IEnumerable collecting N random element of type T </returns>
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
+        {
+            return source.Shuffle().Take(count);
+        }
     }
 }

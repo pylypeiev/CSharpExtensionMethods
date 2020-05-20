@@ -47,5 +47,29 @@ namespace Pylypeiev.Extensions
             if (size < Math.Pow(1024, 6)) { return (size / Math.Pow(1024, 5)).ToString("F0") + "PB"; }
             return (size / Math.Pow(1024, 6)).ToString("F0") + "EB";
         }
+
+        /// <summary>Add a number to this number </summary>
+        public static int Plus(this int value, int value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static int Minus(this int value, int value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static int DivideBy(this int value, int value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static int MultiplyBy(this int value, int value2)
+        {
+            return value / value2;
+        }
     }
 }

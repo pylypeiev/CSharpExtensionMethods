@@ -72,5 +72,29 @@ namespace Pylypeiev.Extensions
         {
             return Math.Round(d, doubles);
         }
+
+        /// <summary>Add a number to this number </summary>
+        public static double Plus(this double value, double value2)
+        {
+            return value + value2;
+        }
+
+        /// <summary>Subtract a number from this number </summary>
+        public static double Minus(this double value, double value2)
+        {
+            return value - value2;
+        }
+
+        /// <summary>Divide this number by given number</summary>
+        public static double DivideBy(this double value, double value2)
+        {
+            return value / value2;
+        }
+
+        /// <summary>Multiply this number by given number</summary>
+        public static double MultiplyBy(this double value, double value2)
+        {
+            return value / value2;
+        }
     }
 }

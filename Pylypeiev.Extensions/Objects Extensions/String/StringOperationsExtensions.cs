@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Pylypeiev.Extensions
 {
@@ -53,6 +55,33 @@ namespace Pylypeiev.Extensions
             char[] array = str.ToCharArray();
             Array.Reverse(array);
             return new string(array);
+        }
+
+        /// <summary>
+        /// Split CamelCase words
+        /// </summary>
+        /// <returns>split words</returns>
+        public static string SplitCamelCase(this string str)
+        {
+            return Regex.Replace(str, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
+        }
+
+        /// <summary>
+        /// Surround this string with some string
+        /// </summary>
+        public static string SurroundWith(this string str, string surrounder)
+        {
+            return surrounder + str + surrounder;
+        }
+
+        /// <summary>
+        /// Converts the specified string to title case (except for words that are entirely in uppercase).
+        /// </summary>
+        /// <returns>The specified string converted to title case.</returns>
+        public static string ToTitleCase(this string str)
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            return cultureInfo.TextInfo.ToTitleCase(str.ToLower());
         }
     }
 }

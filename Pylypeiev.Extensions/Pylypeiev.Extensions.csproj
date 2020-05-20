@@ -52,6 +52,8 @@
     <Compile Include="Collections extensions\IListExtensions.cs" />
     <Compile Include="Objects Extensions\Decimal\DecimalExtensions.cs" />
     <Compile Include="Objects Extensions\Double\DoubleExtensions.cs" />
+    <Compile Include="Objects Extensions\Char\CharExtensions.cs" />
+    <Compile Include="Objects Extensions\Exception\ExceptionExtensions.cs" />
     <Compile Include="Objects Extensions\Float\FloatExtensions.cs" />
     <Compile Include="Objects Extensions\Int\IntExtensions.cs" />
     <Compile Include="Objects Extensions\DateTime\DateTimeExtensions.cs" />

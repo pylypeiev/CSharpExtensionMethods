@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Pylypeiev.Extensions
 {
@@ -38,6 +39,23 @@ namespace Pylypeiev.Extensions
             }
 
             return dict[key];
+        }
+
+        /// <summary>
+        /// Convert this dictionary to list of Tuples, where item1 is key and item2 is a value from this dictionary
+        /// </summary>
+        /// <returns>List with tuples</returns>
+        public static List<Tuple<TKey, TValue>> ToTuple<TKey, TValue>(this Dictionary<TKey, TValue> dict)
+        {
+            if (dict == null || dict.Count == 0)
+                return new List<Tuple<TKey, TValue>>(0);
+
+            var tuples = new List<Tuple<TKey, TValue>>(dict.Count);
+
+            foreach (var val in dict)
+                tuples.Add(Tuple.Create(val.Key, val.Value));
+
+            return tuples;
         }
     }
 }

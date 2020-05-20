@@ -24,6 +24,8 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [long](#long)
 - [object](#object)
 - [string](#string)
+- [char](#char)
+- [Exception](#exception)
 
 #### XML extension methods (Namespace - Pylypeiev.Extensions.Xml):
 - [XML](#xml)
@@ -40,6 +42,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 ### Dictionary extension methods:
 - [AddIfNotContainsKey](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary if this key is not exist yet
 - [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary, if this key is exist - update value
+- [ToTuple](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Convert this dictionary to list of Tuples, where item1 is key and item2 is a value from this dictionary
 
 <a name="icollection"></a>
 
@@ -62,6 +65,8 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IsNullOrEmpty](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Check if IEnumerable is null or empty
 - [Join](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Concatenates the elements of an IEnumerable, using the specified separator between each element
 - [Prepend](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Add the object at the beginning of IEnumerable
+- [Shuffle](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Shuffle IEnumerable
+- [PickRandom](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Pick N random elements from IEnumerable
 
 <a name="ilist"></a>
 
@@ -69,6 +74,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
  - [ChunkBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Chunk a list to smaller lists with a maximum capacity of the chunk size
  - [Clone](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Clone an collection to new IList
  - [Push](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Adds an object to the collection and return this collection for fluent api
+ - [GetPermutations](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Get all permutations for this List
 
 ## POCO extension methods (Namespace - Pylypeiev.Extensions):
 
@@ -102,6 +108,10 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Returns the smaller of two numbers
 - [Round](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Rounds a decimal value to the nearest integral value
+- [Plus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Add a number to this number
+- [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Subtract a number from this number
+- [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Divide this number by given number
+- [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Decimal/DecimalExtensions.cs) - Multiply this number by given number
 
 <a name="double"></a>
 
@@ -114,6 +124,10 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Returns the smaller of two numbers
 - [Round](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Rounds a decimal value to the nearest integral value
+- [Plus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Add a number to this number
+- [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Subtract a number from this number
+- [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Divide this number by given number
+- [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Double/DoubleExtensions.cs) - Multiply this number by given number
 
 <a name="float"></a>
 
@@ -123,7 +137,10 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IsBetween](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Check if this number is between 2 numbers
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Returns the smaller of two numbers
-
+- [Plus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Add a number to this number
+- [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Subtract a number from this number
+- [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Divide this number by given number
+- [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Multiply this number by given number
 
 <a name="int"></a>
 
@@ -133,6 +150,10 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Returns the smaller of two numbers
 - [ToFileSize](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Format file size in KB/MB/GB/TB/PB/EB
+- [Plus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Add a number to this number
+- [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Subtract a number from this number
+- [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Divide this number by given number
+- [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Int/IntExtensions.cs) - Multiply this number by given number
 
 <a name="long"></a>
 
@@ -142,6 +163,10 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [Max](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Returns the larger of two numbers
 - [Min](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Returns the smaller of two numbers
 - [ToFileSize](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Format file size in KB/MB/GB/TB/PB/EB
+- [Plus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Add a number to this number
+- [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Subtract a number from this number
+- [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Divide this number by given number
+- [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Long/LongExtensions.cs) - Multiply this number by given number
 
 
 <a name="object"></a>
@@ -155,6 +180,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IsNull](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Check if object is null
 - [ToStringSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - like ToString of the object, but not crushes if the object is null 
 - [Try](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Try to perform action/function on object
+- [Yield](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Wraps this object instance into an IEnumerable, consisting of a single item
 
 <a name="string"></a>
 
@@ -165,13 +191,18 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [ToFloat](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to float
 - [ToInt](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to int
 - [ToLong](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Convert to long
+- [ToByteArray](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringParsingExtensions.cs) - Converts a string into an byte array
 - [DecodeBase64](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringEncodingExtensions.cs) - Decodes a string encoded in base-64
 - [EncodeBase64](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringEncodingExtensions.cs) - Encodes a string to its equivalent string representation that is encoded in base-64
+- [ToMd5](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringEncodingExtensions.cs) - Computes MD5 hash of a string.
 - [RemoveFirst](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the number of characters at the start of this string
 - [RemoveFirstCharacter](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the first character of this string
 - [RemoveLast](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the number of characters at the end of this string
 - [RemoveLastCharacter](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Remove the last character of this string
 - [Reverse](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Reverse the sequence of characters in this string
+- [SplitCamelCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Split CamelCase words
+- [SurroundWith](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Surround this string with some string
+- [ToTitleCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Converts the specified string to title case
 - [EndsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the end of this string matches the specified string
 - [EqualsIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether two specified strings have the same value
 - [IfNullThen](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if the string is null or whitespace if yes returns nullAlternateValue
@@ -188,6 +219,16 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [OccurrenceNum](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the numbers of matches in this string
 - [StartsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the beginning of this string matches the specified string
 - [SaveAs](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringIOExtensions.cs) - write string to file
+
+<a name="char"></a>
+
+### char extension methods:
+- [EqualsIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Char/CharExtensions.cs) - Determines whether two specified chars have the same value
+
+<a name="exception"></a>
+
+### Exception extension methods:
+- [GetInnermostException](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Exception/ExceptionExtensions.cs) - Get the innermost exception from this exception
 
 <a name="xml"></a>
 

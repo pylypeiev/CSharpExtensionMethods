@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pylypeiev.Extensions
@@ -173,6 +174,14 @@ namespace Pylypeiev.Extensions
                 catchAction(obj);
                 return false;
             }
+        }
+
+        /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
+        /// <param name="item"> The instance that will be wrapped.</param>
+        /// <returns> An IEnumerable of a single item. </returns>
+        public static IEnumerable<T> Yield<T>(this T item)
+        {
+            yield return item;
         }
     }
 }
