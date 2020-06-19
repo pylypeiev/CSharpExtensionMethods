@@ -61,5 +61,14 @@ namespace Pylypeiev.Extensions
         {
             return date.IsPast(DateTime.Now);
         }
+
+        /// <summary>
+        /// Check if this DateTime is default, empty value
+        /// </summary>
+        /// <returns>true if </returns>
+        public static bool IsDefault(this DateTime target)
+        {
+            return target == default;
+        }
     }
 }

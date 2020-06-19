@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Pylypeiev.Extensions
 {
@@ -15,6 +16,20 @@ namespace Pylypeiev.Extensions
                 innerMostException = innerMostException.InnerException;
 
             return innerMostException;
+        }
+
+        /// <summary>
+        /// Get list of inner exceptions from this exception
+        /// </summary>
+        /// <returns>IEnumerable of inner exceptions from this exceptions</returns>
+        public static IEnumerable<Exception> GetInnerExceptions(this Exception ex)
+        {
+            var innerEx = ex.InnerException;
+            while (innerEx != null)
+            {
+                yield return innerEx;
+                innerEx = innerEx.InnerException;
+            }
         }
     }
 }

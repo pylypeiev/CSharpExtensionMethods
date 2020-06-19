@@ -96,6 +96,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [GetTime](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Get time in numbers format
 - [IsFuture](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this date is future
 - [IsPast](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this date is past
+- [IsDefault](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this DateTime is default, empty value
 
 <a name="decimal"></a>
 
@@ -229,6 +230,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ### Exception extension methods:
 - [GetInnermostException](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Exception/ExceptionExtensions.cs) - Get the innermost exception from this exception
+- [GetInnerExceptions](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Exception/ExceptionExtensions.cs) - Get list of inner exceptions from this exception
 
 <a name="xml"></a>
 

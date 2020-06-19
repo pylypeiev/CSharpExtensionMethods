@@ -1441,6 +1441,29 @@ namespace Pylypeiev.Extensions.Minimal
         {
             return value / value2;
         }
+
+        /// <summary>
+        /// Check if this DateTime is default, empty value
+        /// </summary>
+        /// <returns>true if </returns>
+        public static bool IsDefault(this DateTime target)
+        {
+            return target == default;
+        }
+
+        /// <summary>
+        /// Get list of inner exceptions from this exception
+        /// </summary>
+        /// <returns>IEnumerable of inner exceptions from this exceptions</returns>
+        public static IEnumerable<Exception> GetInnerExceptions(this Exception ex)
+        {
+            var innerEx = ex.InnerException;
+            while (innerEx != null)
+            {
+                yield return innerEx;
+                innerEx = innerEx.InnerException;
+            }
+        }
     }
 }
 
