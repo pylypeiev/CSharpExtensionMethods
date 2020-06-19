@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Pylypeiev.Extensions
+﻿namespace Pylypeiev.Extensions
 {
     public static class CharExtensions
     {
