@@ -1464,6 +1464,18 @@ namespace Pylypeiev.Extensions.Minimal
                 innerEx = innerEx.InnerException;
             }
         }
+
+        /// <summary> Get an element with provided key if this key is exist, otherwise default value </summary>
+        /// <param name="key"> The object to use as a key </param>
+        /// <param name="key"> The object to use as a key </param>
+        /// <param name="defaultValue"> TValue that will be returned if key is not exist</param>
+        /// <returns>  Get an element with provided key if this key is exist, otherwise default value </returns>
+        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue defaultValue)
+        {
+            if (dict.TryGetValue(key, out TValue value)) return value;
+
+            return defaultValue;
+        }
     }
 }
 

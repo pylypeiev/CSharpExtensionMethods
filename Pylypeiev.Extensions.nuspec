@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>Pylypeiev.Extensions</id>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <authors>Yakov Pylypeiev</authors>
     <owners>Yakov Pylypeiev</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
     <description>My C# Extension methods for collections and POCO objects</description>
-    <releaseNotes>Some new extensions added! DateTime.IsDefault,Exception.GetInnerExceptions </releaseNotes>
+    <releaseNotes>Some new extensions added! Dictionary.GetValueOrDefault </releaseNotes>
     <copyright>Copyright 2020</copyright>
 	 <dependencies>
       <group targetFramework=".NETFramework4.5.1" />

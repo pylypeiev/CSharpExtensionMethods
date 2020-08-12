@@ -43,6 +43,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [AddIfNotContainsKey](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary if this key is not exist yet
 - [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary, if this key is exist - update value
 - [ToTuple](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Convert this dictionary to list of Tuples, where item1 is key and item2 is a value from this dictionary
+- [GetValueOrDefault](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Get an element with provided key if this key is exist, otherwise default value
 
 <a name="icollection"></a>
 
