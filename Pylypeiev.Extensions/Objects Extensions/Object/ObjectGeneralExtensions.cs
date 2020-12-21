@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Pylypeiev.Extensions
 {
@@ -182,6 +184,20 @@ namespace Pylypeiev.Extensions
         public static IEnumerable<T> Yield<T>(this T item)
         {
             yield return item;
+        }
+
+        /// <summary>Deep copy of object using BinaryFormatter</summary>
+        /// <param name="source"> An object to copy</param>
+        /// <returns> An deep copy of object of type T</returns>
+        public static T DeepCopy<T>(this T source)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, source);
+                ms.Position = 0;
+                return (T)formatter.Deserialize(ms);
+            }
         }
     }
 }

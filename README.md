@@ -68,7 +68,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [Prepend](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Add the object at the beginning of IEnumerable
 - [Shuffle](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Shuffle IEnumerable
 - [PickRandom](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Pick N random elements from IEnumerable
-
+- [ThisOrEmpty](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IEnumerableExtensions.cs) - Safe foreach and more, returns an empty Enumerable if source is null
 <a name="ilist"></a>
 
 ### IList extension methods:
@@ -183,6 +183,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [ToStringSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - like ToString of the object, but not crushes if the object is null 
 - [Try](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Try to perform action/function on object
 - [Yield](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Wraps this object instance into an IEnumerable, consisting of a single item
+- [DeepCopy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Object/ObjectGeneralExtensions.cs) - Deep copy of object using BinaryFormatter
 
 <a name="string"></a>
 
@@ -205,6 +206,11 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [SplitCamelCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Split CamelCase words
 - [SurroundWith](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Surround this string with some string
 - [ToTitleCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Converts the specified string to title case
+- [TrimSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Performs a trim only if the item is not null
+- [ToLowerSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Performs ToLower() only if input is not null
+- [ToLowerInvariantSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Performs ToLowerInvariant() only if input is not null
+- [ToUpperSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Performs ToUpper() only if input is not null
+- [ToUpperInvariantSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringOperationsExtensions.cs) - Performs ToUpperInvariant() only if input is not null
 - [EndsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the end of this string matches the specified string
 - [EqualsIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether two specified strings have the same value
 - [IfNullThen](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if the string is null or whitespace if yes returns nullAlternateValue

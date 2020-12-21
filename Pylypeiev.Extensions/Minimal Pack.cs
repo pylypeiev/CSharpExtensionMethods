@@ -3,9 +3,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -1475,6 +1477,109 @@ namespace Pylypeiev.Extensions.Minimal
             if (dict.TryGetValue(key, out TValue value)) return value;
 
             return defaultValue;
+        }
+
+        /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
+        /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        public static IEnumerable<T> ThisOrEmpty<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable ?? Enumerable.Empty<T>();
+        }
+
+        /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
+        /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        public static IEnumerable ThisOrEmpty(this IEnumerable enumerable)
+        {
+            return enumerable ?? new ArrayList(0);
+        }
+
+        /// <summary>Deep copy of object using BinaryFormatter</summary>
+        /// <param name="source"> An object to copy</param>
+        /// <returns> An deep copy of object of type T</returns>
+        public static T DeepCopy<T>(this T source)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, source);
+                ms.Position = 0;
+                return (T)formatter.Deserialize(ms);
+            }
+        }
+
+        /// <summary>Performs a trim only if the item is not null</summary>
+        /// <returns>The string that remains after all white-space characters are removed from the
+        ///     start and end of the current string. If no characters can be trimmed from the
+        ///     current instance, the method returns the current instance unchanged. If string is null - string.Empty returned
+        ///</returns>
+        public static string TrimSafe(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
+
+            return str.Trim();
+        }
+
+        /// <summary>Performs ToLower() only if input is not null</summary>
+        /// <returns>The lowercase equivalent of the current string or string.Empty if input is null</returns>
+        public static string ToLowerSafe(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToLower();
+        }
+
+        /// <summary>Performs ToLower() only if input is not null</summary>
+        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
+        /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
+        //     of the specified culture  or string.Empty if input is null</returns>
+        public static string ToLowerSafe(this string input, CultureInfo culture)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToLower(culture);
+        }
+
+        /// <summary>Performs ToLowerInvariant() only if input is not null</summary>
+        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
+        /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
+        //     of the invariant culture or string.Empty if input is null</returns>
+        public static string ToLowerInvariantSafe(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToLowerInvariant();
+        }
+
+
+        /// <summary>Performs ToUpper() only if input is not null</summary>
+        /// <returns>The uppercase equivalent of the current string  or string.Empty if input is null</returns>
+        public static string ToUpperSafe(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToUpper();
+        }
+
+        /// <summary>Performs ToUpper() only if input is not null</summary>
+        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
+        /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
+        //     of the specified culture. or string.Empty if input is null</returns>
+        public static string ToUpperSafe(this string input, CultureInfo culture)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToUpper(culture);
+        }
+
+        /// <summary>Performs ToUpperInvariant() only if input is not null</summary>
+        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
+        /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
+        //     of the invariant culture or string.Empty if input is null</returns>
+        public static string ToUpperInvariantSafe(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+
+            return input.ToUpperInvariant();
         }
     }
 }

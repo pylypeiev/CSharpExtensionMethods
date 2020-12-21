@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -138,6 +139,20 @@ namespace Pylypeiev.Extensions
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
             return source.Shuffle().Take(count);
+        }
+
+        /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
+        /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        public static IEnumerable<T> ThisOrEmpty<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable ?? Enumerable.Empty<T>();
+        }
+
+        /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
+        /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        public static IEnumerable ThisOrEmpty(this IEnumerable enumerable)
+        {
+            return enumerable ?? new ArrayList(0);
         }
     }
 }
