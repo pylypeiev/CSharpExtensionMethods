@@ -4,15 +4,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace Pylypeiev.Extensions.Minimal
+namespace Pylypeiev.Extensions.MustHavePack
 {
     public static class ExtensionMethods
     {
@@ -42,39 +39,6 @@ namespace Pylypeiev.Extensions.Minimal
             Array.Clear(arr, 0, arr.Length);
         }
 
-        /// <summary>
-        /// Concatenates the elements of an object array, using the specified separator between each element
-        /// </summary>
-        /// <param name="separator">
-        /// The string to use as a separator. separator is included in the returned string
-        /// only if values has more than one element/
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">if values is null</exception>
-        /// <returns>
-        /// A string that consists of the elements of values delimited by the separator string.
-        /// If values is an empty array, the method returns System.String.Empty.
-        /// </returns>
-        public static string Join(this Array array, string separator)
-        {
-            return string.Join(separator, array);
-        }
-
-        /// <summary>
-        /// Concatenates the elements of an object array, using the specified separator between each element
-        /// </summary>
-        /// <param name="separator">
-        /// The string to use as a separator. separator is included in the returned string
-        /// only if values has more than one element/
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">if values is null</exception>
-        /// <returns>
-        /// A string that consists of the elements of values delimited by the separator string.
-        /// If values is an empty array, the method returns System.String.Empty.
-        /// </returns>
-        public static string Join<T>(this T[] array, string separator)
-        {
-            return string.Join(separator, array);
-        }
 
         /// <summary> Add an element with provided key to dictionary if this key is not exist yet </summary>
         /// <param name="key"> The object to use as a key </param>
@@ -144,19 +108,6 @@ namespace Pylypeiev.Extensions.Minimal
                 collection.Add(value);
         }
 
-        /// <summary> Check if collection is null or empty </summary>
-        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
-        public static bool IsNullOrEmpty(this ICollection obj)
-        {
-            return obj == null || obj.Count == 0;
-        }
-
-        /// <summary> Check if collection is null or empty </summary>
-        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
-        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
-        {
-            return collection == null || collection.Count == 0;
-        }
 
         /// <summary>Removes a range of elements from collection</summary>
         /// <param name="values">values</param>
@@ -186,25 +137,6 @@ namespace Pylypeiev.Extensions.Minimal
             yield return element;
         }
 
-        /// <summary> Check if all elements in IEnumerable are equals </summary>
-        /// <returns>true if they are equals, otherwise - false</returns>
-        public static bool AreAllSame<T>(this IEnumerable<T> enumerable)
-        {
-            if (enumerable == null) throw new ArgumentNullException(nameof(enumerable));
-
-            using (var enumerator = enumerable.GetEnumerator())
-            {
-                var toCompare = default(T);
-                if (enumerator.MoveNext())
-                    toCompare = enumerator.Current;
-
-                while (enumerator.MoveNext())
-                    if (toCompare != null && !toCompare.Equals(enumerator.Current))
-                        return false;
-            }
-
-            return true;
-        }
 
         /// <summary>
         /// Concatenates the elements of an IEnumerable<string> to 1 string. Uses StringBuilder
@@ -320,43 +252,6 @@ namespace Pylypeiev.Extensions.Minimal
             return list;
         }
 
-        /// <summary>convert a boolean value to string representation</summary>
-        /// <param name="yes">returned string if bool is truthy</param>
-        /// <param name="no" >returned string if bool is falsy</param>
-        /// <returns>boolean value in string representation</returns>
-        public static string ToYesNo(this bool b, string yes = "Yes", string no = "No")
-        {
-            return b ? yes : no;
-        }
-
-        /// <summary>
-        /// Converts an byte array to its equivalent string representation that is encoded with base-64.
-        /// </summary>
-        /// <returns> base64 string representation, if array is empty - returns empty string </returns>
-        public static string ToBase64String(this byte[] arr)
-        {
-            if (arr == null || arr.Length == 0) return string.Empty;
-
-            return Convert.ToBase64String(arr);
-        }
-
-        /// <summary>Check if date is between 2 dates. Inclusive.</summary>
-        /// <param name="start">from date</param>
-        /// <param name="end">to date</param>
-        /// <returns>true if date is between, otherwise - false</returns>
-        public static bool Between(this DateTime date, DateTime start, DateTime end)
-        {
-            return date.Ticks >= start.Ticks && date.Ticks <= end.Ticks;
-        }
-
-        /// <summary> Calculate age </summary>
-        /// <returns> age in numbers</returns>
-        public static int CalculateAge(this DateTime dateTime)
-        {
-            var age = DateTime.Now.Year - dateTime.Year;
-            if (DateTime.Now < dateTime.AddYears(age)) age--;
-            return age;
-        }
 
         /// <summary>
         /// Get time from this DateTime in numbers format.
@@ -368,35 +263,6 @@ namespace Pylypeiev.Extensions.Minimal
             return date.ToString(timeFormat).ToInt();
         }
 
-        /// <summary>Check if this date is future </summary>
-        /// <param name="from">date from. Exclusive</param>
-        /// <returns>true if the date is in future, otherwise - false</returns>
-        public static bool IsFuture(this DateTime date, DateTime from)
-        {
-            return date.Date > from.Date;
-        }
-
-        /// <summary>Check if this date is future </summary>
-        /// <returns>true if the date is in future, otherwise - false</returns>
-        public static bool IsFuture(this DateTime date)
-        {
-            return date.IsFuture(DateTime.Now);
-        }
-
-        /// <summary>Check if this date is past </summary>
-        /// <param name="from">date from. Exclusive</param>
-        /// <returns>true if the date is in past, otherwise - false</returns>
-        public static bool IsPast(this DateTime date, DateTime from)
-        {
-            return date.Date < from.Date;
-        }
-
-        /// <summary>Check if this date is past </summary>
-        /// <returns>true if the date is in past, otherwise - false</returns>
-        public static bool IsPast(this DateTime date)
-        {
-            return date.IsPast(DateTime.Now);
-        }
 
         /// <summary>Returns the absolute value of this number.</summary>
         public static decimal Abs(this decimal value)
@@ -636,41 +502,6 @@ namespace Pylypeiev.Extensions.Minimal
             return Math.Min(val1, val2);
         }
 
-        /// <summary>Get properties and values of this object using reflection</summary>
-        /// <param name="obj"></param>
-        /// <returns>dictionary where key is property of object and value is value of this property</returns>
-        public static Dictionary<string, string> GetPropertiesWithValues(this object obj)
-        {
-            var dictionary = new Dictionary<string, string>();
-
-            Type objectType = obj.GetType();
-
-            foreach (PropertyInfo prop in new List<PropertyInfo>(objectType.GetProperties()))
-            {
-                object propValue = prop.GetValue(obj, null);
-                dictionary.Add(prop.Name, propValue?.ToString());
-            }
-
-            return dictionary;
-        }
-
-        /// <summary>Get properties and values of this object using reflection</summary>
-        /// <param name="propNameValueSeparator">separator between property and value</param>
-        /// <param name="propsSeparator">separator between different properties</param>
-        /// <returns>string with properties and values separated with provided symbols</returns>
-        public static string GetPropertiesWithValues(this object obj, string propNameValueSeparator = " = ", string propsSeparator = ", ")
-        {
-            var sb = new StringBuilder();
-
-            var objectType = obj.GetType();
-            foreach (PropertyInfo prop in new List<PropertyInfo>(objectType.GetProperties()))
-            {
-                object propValue = prop.GetValue(obj, null);
-                sb.Append(prop.Name).Append(propNameValueSeparator).Append(propValue?.ToString()).Append(propsSeparator);
-            }
-
-            return sb.ToString();
-        }
 
         /// <summary>Perform action on the object if it not null</summary>
         /// <param name="action">action to perform</param>
@@ -842,66 +673,6 @@ namespace Pylypeiev.Extensions.Minimal
             }
         }
 
-        /// <summary>Decodes a string encoded in base-64</summary>
-        /// <returns>Decoded string, if string is empty/whitespace - empty string </returns>
-        public static string DecodeBase64(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
-
-            return Encoding.UTF8.GetString(Convert.FromBase64String(str));
-        }
-
-        /// <summary>Encodes a string to its equivalent string representation that is encoded in base-64</summary>
-        /// <returns> base64 string representation, if string is empty/whitespace - empty string </returns>
-        public static string EncodeBase64(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
-
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
-        }
-
-        /// <summary>write string to file</summary>
-        /// <param name="path">The complete file path to write to</param>
-        /// <param name="append">true to append data to the file; false to overwrite the file.</param>
-        /// <returns>true if succeeded to write to file, otherwise - false</returns>
-        public static bool SaveAs(this string str, string path, bool append = false)
-        {
-            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(path)) return false;
-
-            try
-            {
-                using (var tw = new StreamWriter(path, append))
-                    tw.Write(str);
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        /// <summary>write string to file</summary>
-        /// <param name="fileInfo">fileInfo about the file to write to</param>
-        /// <param name="append">true to append data to the file; false to overwrite the file.</param>
-        /// <returns>true if succeeded to write to file, otherwise - false</returns>
-        public static bool SaveAs(this string str, FileInfo fileInfo, bool append = false)
-        {
-            if (string.IsNullOrWhiteSpace(str) || fileInfo == null || string.IsNullOrWhiteSpace(fileInfo.FullName)) return false;
-
-            try
-            {
-                using (var tw = new StreamWriter(fileInfo.FullName, append))
-                    tw.Write(str);
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         /// <summary>Remove the number of characters at the start of this string</summary>
         /// <param name="number">number of characters to remove</param>
         /// <exception cref="System.ArgumentOutOfRangeException">number is less than zero or greater than the length of this string</exception>
@@ -1058,34 +829,6 @@ namespace Pylypeiev.Extensions.Minimal
             return (!string.IsNullOrWhiteSpace(input)) ? input : nullAlternateValue;
         }
 
-        /// <summary>Determines if this string contains only English letters, upper and lower case</summary>
-        /// <returns>true if contains only letters, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlpha(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return !Regex.IsMatch(str, "[^a-zA-Z]");
-        }
-
-        /// <summary>Determines if this string contains only English letters, upper and lower case and digits</summary>
-        /// <returns>true if contains only letters and digits, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlphaNumeric(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return !Regex.IsMatch(str, "[^a-zA-Z0-9]");
-        }
-
-        /// <summary>Determines if this string is an anagram</summary>
-        /// <returns>true if this string is an anagram, otherwise - false, if one of the strings are null - false</returns>
-        public static bool IsAnagram(this string thisString, string otherString)
-        {
-            if (string.IsNullOrWhiteSpace(thisString) || string.IsNullOrWhiteSpace(otherString)) return false;
-
-            return thisString
-                .OrderBy(c => c)
-                .SequenceEqual(otherString.OrderBy(c => c));
-        }
 
         /// <summary>Indicates whether this string is null or an empty string</summary>
         /// <returns>true if the string is null or an empty string,otherwise, false.</returns>
@@ -1110,32 +853,6 @@ namespace Pylypeiev.Extensions.Minimal
             return !Regex.IsMatch(str, "[^0-9]");
         }
 
-        /// <summary>Check if this string is a palindrome</summary>
-        /// <returns>true if this string is a palindrome, otherwise - false, If the string is null - false</returns>
-        public static bool IsPalindrome(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return str.SequenceEqual(str.Reverse());
-        }
-
-        /// <summary>Determines if this string is a valid email address</summary>
-        /// <returns>true if valid email address, otherwise - false, If the string is null - false</returns>
-        public static bool IsValidEmail(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return Regex.IsMatch(str, @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z0-9]{1,30})(\]?)$");
-        }
-
-        /// <summary>Determines if this string is a valid IP address</summary>
-        /// <returns>true if valid IP address, otherwise - false, If the string is null - false</returns>
-        public static bool IsValidIP(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return Regex.IsMatch(str, @"^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$");
-        }
 
         /// <summary>
         /// Reports the index of matched string regards to occurrenceNum.
@@ -1183,39 +900,6 @@ namespace Pylypeiev.Extensions.Minimal
             return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
         }
 
-        /// <summary>Computes MD5 hash of a string.</summary>
-        /// <param name="str">String to hash.</param>
-        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
-        /// <returns>MD5 hash in hexadecimal format. If string is null or empty - empty string</returns>
-        public static string ToMd5(this string str, Encoding encoding = null)
-        {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
-
-            if (encoding == null)
-                encoding = Encoding.UTF8;
-
-            var stringBuilder = new StringBuilder(32);
-            using (var md5 = System.Security.Cryptography.MD5.Create())
-            {
-                foreach (byte num in md5.ComputeHash(encoding.GetBytes(str)))
-                    stringBuilder.Append(num.ToString("x2"));
-            }
-            return stringBuilder.ToString();
-        }
-
-        /// <summary>Converts a string into an byte array.</summary>
-        /// <param name="str">A string to convert.</param>
-        /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
-        /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
-        public static byte[] ToByteArray(this string str, Encoding encoding = null)
-        {
-            if (string.IsNullOrEmpty(str)) return new byte[0];
-
-            if (encoding == null)
-                encoding = Encoding.UTF8;
-
-            return encoding.GetBytes(str);
-        }
 
         /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
         /// <param name="item"> The instance that will be wrapped.</param>
@@ -1235,14 +919,6 @@ namespace Pylypeiev.Extensions.Minimal
             return char.ToUpperInvariant(ch) == char.ToUpperInvariant(compareTo);
         }
 
-        /// <summary>
-        /// Split CamelCase words
-        /// </summary>
-        /// <returns>split words</returns>
-        public static string SplitCamelCase(this string str)
-        {
-            return Regex.Replace(str, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
-        }
 
         /// <summary> Shuffle IEnumerable </summary>
         /// <returns> a random shuffled IEnumerable</returns>
@@ -1264,33 +940,6 @@ namespace Pylypeiev.Extensions.Minimal
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
             return source.Shuffle().Take(count);
-        }
-
-        /// <summary>
-        /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static List<List<T>> GetPermutations<T>(this List<T> list)
-        {
-            var result = new List<List<T>>();
-            if (list.Count == 1)
-            {
-                result.Add(list);
-                return result;
-            }
-            foreach (var element in list)
-            {
-                var remainingList = new List<T>(list);
-                remainingList.Remove(element);
-                foreach (var permutation in GetPermutations(remainingList))
-                {
-                    permutation.Add(element);
-                    result.Add(permutation);
-                }
-            }
-            return result;
         }
 
         /// <summary>
@@ -1493,19 +1142,6 @@ namespace Pylypeiev.Extensions.Minimal
             return enumerable ?? new ArrayList(0);
         }
 
-        /// <summary>Deep copy of object using BinaryFormatter</summary>
-        /// <param name="source"> An object to copy</param>
-        /// <returns> An deep copy of object of type T</returns>
-        public static T DeepCopy<T>(this T source)
-        {
-            using (var ms = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(ms, source);
-                ms.Position = 0;
-                return (T)formatter.Deserialize(ms);
-            }
-        }
 
         /// <summary>Performs a trim only if the item is not null</summary>
         /// <returns>The string that remains after all white-space characters are removed from the
