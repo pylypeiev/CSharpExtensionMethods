@@ -9,15 +9,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-<<<<<<< HEAD
 namespace Pylypeiev.Extensions.MustHavePack
 {
     public static class ExtensionMethods
-=======
-namespace Pylypeiev.Extensions.MustHave
-{
-    public static class MinimalPack
->>>>>>> c8c957026b9548d6a671b1a9ae25bafd8f244641
     {
         /// <summary>
         /// Sets a range of elements in an array to the default value of each element type.
@@ -143,28 +137,6 @@ namespace Pylypeiev.Extensions.MustHave
             yield return element;
         }
 
-<<<<<<< HEAD
-=======
-        /// <summary> Check if all elements in IEnumerable are equals </summary>
-        /// <returns>true if they are equals, otherwise - false</returns>
-        public static bool AreAllSame<T>(this IEnumerable<T> enumerable)
-        {
-            if (enumerable == null) throw new ArgumentNullException(nameof(enumerable));
-
-            using (var enumerator = enumerable.GetEnumerator())
-            {
-                var toCompare = default(T);
-                if (enumerator.MoveNext())
-                    toCompare = enumerator.Current;
-
-                while (enumerator.MoveNext())
-                    if (toCompare != null && !toCompare.Equals(enumerator.Current))
-                        return false;
-            }
-
-            return true;
-        }
->>>>>>> c8c957026b9548d6a671b1a9ae25bafd8f244641
 
         /// <summary>
         /// Concatenates the elements of an IEnumerable<string> to 1 string. Uses StringBuilder
@@ -857,26 +829,6 @@ namespace Pylypeiev.Extensions.MustHave
             return (!string.IsNullOrWhiteSpace(input)) ? input : nullAlternateValue;
         }
 
-<<<<<<< HEAD
-=======
-        /// <summary>Determines if this string contains only English letters, upper and lower case</summary>
-        /// <returns>true if contains only letters, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlpha(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return !Regex.IsMatch(str, "[^a-zA-Z]");
-        }
-
-        /// <summary>Determines if this string contains only English letters, upper and lower case and digits</summary>
-        /// <returns>true if contains only letters and digits, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlphaNumeric(this string str)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return false;
-
-            return !Regex.IsMatch(str, "[^a-zA-Z0-9]");
-        }
->>>>>>> c8c957026b9548d6a671b1a9ae25bafd8f244641
 
         /// <summary>Indicates whether this string is null or an empty string</summary>
         /// <returns>true if the string is null or an empty string,otherwise, false.</returns>
@@ -991,36 +943,6 @@ namespace Pylypeiev.Extensions.MustHave
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static List<List<T>> GetPermutations<T>(this List<T> list)
-        {
-            var result = new List<List<T>>();
-            if (list.Count == 1)
-            {
-                result.Add(list);
-                return result;
-            }
-            foreach (var element in list)
-            {
-                var remainingList = new List<T>(list);
-                remainingList.Remove(element);
-                foreach (var permutation in GetPermutations(remainingList))
-                {
-                    permutation.Add(element);
-                    result.Add(permutation);
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
->>>>>>> c8c957026b9548d6a671b1a9ae25bafd8f244641
         /// Surround this string with some string
         /// </summary>
         public static string SurroundWith(this string str, string surrounder)
@@ -1220,10 +1142,7 @@ namespace Pylypeiev.Extensions.MustHave
             return enumerable ?? new ArrayList(0);
         }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c8c957026b9548d6a671b1a9ae25bafd8f244641
         /// <summary>Performs a trim only if the item is not null</summary>
         /// <returns>The string that remains after all white-space characters are removed from the
         ///     start and end of the current string. If no characters can be trimmed from the
