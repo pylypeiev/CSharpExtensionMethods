@@ -3,6 +3,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
 ### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Minimal%20Pack.cs) a minimal pack.
+### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/MustHavePack.cs) a must-have pack (a preferred choice).
 
 
 ## Table of Contents:
@@ -36,7 +37,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 ### Array extension methods:
 - [Clear](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ArrayExtensions.cs) - Sets a range of elements in an array to the default value of each element type.
 - [Join](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ArrayExtensions.cs) -  Concatenates the elements of an object array, using the specified separator between each element
-
+- [ToArrayString](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/ArrayExtensions.cs) - A simple string representation of an array(regular, 2d, jagged)
 <a name="dictionary"></a>
 
 ### Dictionary extension methods:

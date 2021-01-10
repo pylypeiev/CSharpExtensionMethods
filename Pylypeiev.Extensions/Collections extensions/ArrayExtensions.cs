@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Pylypeiev.Extensions
 {
@@ -62,6 +63,109 @@ namespace Pylypeiev.Extensions
         public static string Join<T>(this T[] array, string separator)
         {
             return string.Join(separator, array);
+        }
+
+        /// <summary> Returns a simple string representation of an array.</summary>
+        /// <param name="arr">The source array.</param>
+        /// <returns>The <see cref="string"/> representation of the array in format [1, 2, 3] and [] if it is null</returns>
+        public static string ToArrayString<T>(this T[] arr)
+        {
+            if (arr == null) return "[]";
+
+            var sb = new StringBuilder();
+
+            sb.Append('[');
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i != 0) sb.Append(",\t");
+
+                sb.Append(arr[i]?.ToString());
+            }
+
+            sb.Append(']');
+
+            return sb.ToString();
+        }
+
+        /// <summary> Returns a simple string representation of a jagged array.</summary>
+        /// <param name="arr">The source array.</param>
+        /// <returns>String representation of the array. in format [1, 2, 3] and [] if it is null</returns>
+        public static string ToArrayString<T>(this T[][] arr)
+        {
+            if (arr == null) return "[]";
+
+            var sb = new StringBuilder();
+
+            sb.Append('[');
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i != 0)
+                {
+                    sb.Append(',');
+                    sb.Append(Environment.NewLine);
+                    sb.Append(' ');
+                }
+
+                sb.Append('[');
+
+                T[] row = arr[i];
+
+                for (int j = 0; j < row.Length; j++)
+                {
+                    if (j != 0) sb.Append(",\t");
+
+                    sb.Append(row[j]?.ToString());
+                }
+
+                sb.Append(']');
+            }
+
+            sb.Append(']');
+
+            return sb.ToString();
+        }
+
+        /// <summary>Returns a simple string representation of a 2D array.</summary>
+        /// <param name="arr">The source array.</param>
+        /// <returns>The <see cref="string"/> representation of the array in format [[1,2],[3,4]] and [] if it is null</returns>
+        public static string ToArrayString<T>(this T[,] arr)
+        {
+            if (arr == null) return "[]";
+
+            var sb = new StringBuilder();
+
+            sb.Append('[');
+
+            int
+                height = arr.GetLength(0),
+                width = arr.GetLength(1);
+
+            for (int i = 0; i < height; i++)
+            {
+                if (i != 0)
+                {
+                    sb.Append(',');
+                    sb.Append(Environment.NewLine);
+                    sb.Append(' ');
+                }
+
+                sb.Append('[');
+
+                for (int j = 0; j < width; j++)
+                {
+                    if (j != 0) sb.Append(",\t");
+
+                    sb.Append(arr[i, j]?.ToString());
+                }
+
+                sb.Append(']');
+            }
+
+            sb.Append(']');
+
+            return sb.ToString();
         }
     }
 }
