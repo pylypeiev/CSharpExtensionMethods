@@ -1320,6 +1320,15 @@ namespace Pylypeiev.Extensions.MustHavePack
 
             return sb.ToString();
         }
+
+        /// <summary>Returns a value indicating whether a specified substring occurs within this string.</summary>
+        /// <param name="value"> The string to seek</param>
+        /// <param name="stringComparison">One of the enumeration values that determines how this string and value are compared.</param>
+        /// <returns>true if the value parameter occurs within this string, otherwise - false.</returns>
+        public static bool Contains(this string str, string value, StringComparison stringComparison)
+        {
+            return str?.IndexOf(value, stringComparison) >= 0;
+        }
     }
 }
 
