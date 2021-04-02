@@ -227,6 +227,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [NthIndexOf](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the index of matched string regards to occurrenceNum
 - [OccurrenceNum](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the numbers of matches in this string
 - [StartsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the beginning of this string matches the specified string
+- [Contains](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - String.Contains with StringComparison parameter 
 - [SaveAs](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringIOExtensions.cs) - write string to file
 
 <a name="char"></a>
