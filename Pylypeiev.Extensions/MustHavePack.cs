@@ -39,7 +39,6 @@ namespace Pylypeiev.Extensions.MustHavePack
             Array.Clear(arr, 0, arr.Length);
         }
 
-
         /// <summary> Add an element with provided key to dictionary if this key is not exist yet </summary>
         /// <param name="key"> The object to use as a key </param>
         /// <param name="value"> The object to use as a value </param>
@@ -108,7 +107,6 @@ namespace Pylypeiev.Extensions.MustHavePack
                 collection.Add(value);
         }
 
-
         /// <summary>Removes a range of elements from collection</summary>
         /// <param name="values">values</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
@@ -136,7 +134,6 @@ namespace Pylypeiev.Extensions.MustHavePack
                 yield return item;
             yield return element;
         }
-
 
         /// <summary>
         /// Concatenates the elements of an IEnumerable<string> to 1 string. Uses StringBuilder
@@ -252,7 +249,6 @@ namespace Pylypeiev.Extensions.MustHavePack
             return list;
         }
 
-
         /// <summary>
         /// Get time from this DateTime in numbers format.
         /// </summary>
@@ -262,7 +258,6 @@ namespace Pylypeiev.Extensions.MustHavePack
         {
             return date.ToString(timeFormat).ToInt();
         }
-
 
         /// <summary>Returns the absolute value of this number.</summary>
         public static decimal Abs(this decimal value)
@@ -501,7 +496,6 @@ namespace Pylypeiev.Extensions.MustHavePack
         {
             return Math.Min(val1, val2);
         }
-
 
         /// <summary>Perform action on the object if it not null</summary>
         /// <param name="action">action to perform</param>
@@ -829,7 +823,6 @@ namespace Pylypeiev.Extensions.MustHavePack
             return (!string.IsNullOrWhiteSpace(input)) ? input : nullAlternateValue;
         }
 
-
         /// <summary>Indicates whether this string is null or an empty string</summary>
         /// <returns>true if the string is null or an empty string,otherwise, false.</returns>
         public static bool IsNullOrEmpty(this string str)
@@ -845,14 +838,20 @@ namespace Pylypeiev.Extensions.MustHavePack
         }
 
         /// <summary>Determines if this string contains only digits</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if contains only digits, otherwise - false. If the string is null - false</returns>
-        public static bool IsNumeric(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsNumeric(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return !Regex.IsMatch(str, "[^0-9]");
+            return !Regex.IsMatch(str,
+                                 "[^0-9]",
+                                 RegexOptions.Compiled,
+                                 matchTimeout ?? TimeSpan.FromSeconds(1));
         }
-
 
         /// <summary>
         /// Reports the index of matched string regards to occurrenceNum.
@@ -875,16 +874,22 @@ namespace Pylypeiev.Extensions.MustHavePack
             return -1;
         }
 
-        /// <summary>
-        /// Reports the numbers of matches in this string
-        /// </summary>
+        /// <summary>Reports the numbers of matches in this string</summary>
         /// <param name="match"></param>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>the numbers of matches in this string</returns>
-        public static int OccurrenceNum(this string str, string match)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static int OccurrenceNum(this string str, string match, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match)) return 0;
 
-            return Regex.Matches(str, match).Count;
+            return Regex.Matches(str,
+                                 match,
+                                 RegexOptions.Compiled,
+                                 matchTimeout ?? TimeSpan.FromSeconds(1))
+                        .Count;
         }
 
         /// <summary>
@@ -899,7 +904,6 @@ namespace Pylypeiev.Extensions.MustHavePack
 
             return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
         }
-
 
         /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
         /// <param name="item"> The instance that will be wrapped.</param>
@@ -918,7 +922,6 @@ namespace Pylypeiev.Extensions.MustHavePack
         {
             return char.ToUpperInvariant(ch) == char.ToUpperInvariant(compareTo);
         }
-
 
         /// <summary> Shuffle IEnumerable </summary>
         /// <returns> a random shuffled IEnumerable</returns>
@@ -1142,7 +1145,6 @@ namespace Pylypeiev.Extensions.MustHavePack
             return enumerable ?? new ArrayList(0);
         }
 
-
         /// <summary>Performs a trim only if the item is not null</summary>
         /// <returns>The string that remains after all white-space characters are removed from the
         ///     start and end of the current string. If no characters can be trimmed from the
@@ -1185,7 +1187,6 @@ namespace Pylypeiev.Extensions.MustHavePack
 
             return input.ToLowerInvariant();
         }
-
 
         /// <summary>Performs ToUpper() only if input is not null</summary>
         /// <returns>The uppercase equivalent of the current string  or string.Empty if input is null</returns>

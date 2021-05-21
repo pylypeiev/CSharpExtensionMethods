@@ -41,21 +41,35 @@ namespace Pylypeiev.Extensions
         }
 
         /// <summary>Determines if this string contains only English letters, upper and lower case</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if contains only letters, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlpha(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsAlpha(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return !Regex.IsMatch(str, "[^a-zA-Z]");
+            return !Regex.IsMatch(str,
+                                  "[^a-zA-Z]",
+                                  RegexOptions.Compiled,
+                                  matchTimeout ?? TimeSpan.FromSeconds(1));
         }
 
         /// <summary>Determines if this string contains only English letters, upper and lower case and digits</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if contains only letters and digits, otherwise - false. If the string is null - false</returns>
-        public static bool IsAlphaNumeric(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsAlphaNumeric(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return !Regex.IsMatch(str, "[^a-zA-Z0-9]");
+            return !Regex.IsMatch(str,
+                                  "[^a-zA-Z0-9]",
+                                  RegexOptions.Compiled,
+                                  matchTimeout ?? TimeSpan.FromSeconds(1));
         }
 
         /// <summary>Determines if this string is an anagram</summary>
@@ -84,12 +98,19 @@ namespace Pylypeiev.Extensions
         }
 
         /// <summary>Determines if this string contains only digits</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if contains only digits, otherwise - false. If the string is null - false</returns>
-        public static bool IsNumeric(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsNumeric(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return !Regex.IsMatch(str, "[^0-9]");
+            return !Regex.IsMatch(str,
+                                 "[^0-9]",
+                                 RegexOptions.Compiled,
+                                 matchTimeout ?? TimeSpan.FromSeconds(1));
         }
 
         /// <summary>Check if this string is a palindrome</summary>
@@ -102,21 +123,35 @@ namespace Pylypeiev.Extensions
         }
 
         /// <summary>Determines if this string is a valid email address</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if valid email address, otherwise - false, If the string is null - false</returns>
-        public static bool IsValidEmail(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsValidEmail(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return Regex.IsMatch(str, @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z0-9]{1,30})(\]?)$");
+            return Regex.IsMatch(str,
+                                @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z0-9]{1,30})(\]?)$",
+                                RegexOptions.Compiled,
+                                matchTimeout ?? TimeSpan.FromSeconds(1));
         }
 
         /// <summary>Determines if this string is a valid IP address</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>true if valid IP address, otherwise - false, If the string is null - false</returns>
-        public static bool IsValidIP(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static bool IsValidIP(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            return Regex.IsMatch(str, @"^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$");
+            return Regex.IsMatch(str,
+                                @"^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$",
+                                RegexOptions.Compiled,
+                                matchTimeout ?? TimeSpan.FromSeconds(1));
         }
 
         /// <summary>
@@ -140,16 +175,22 @@ namespace Pylypeiev.Extensions
             return -1;
         }
 
-        /// <summary>
-        /// Reports the numbers of matches in this string
-        /// </summary>
+        /// <summary>Reports the numbers of matches in this string</summary>
         /// <param name="match"></param>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>the numbers of matches in this string</returns>
-        public static int OccurrenceNum(this string str, string match)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static int OccurrenceNum(this string str, string match, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match)) return 0;
 
-            return Regex.Matches(str, match).Count;
+            return Regex.Matches(str,
+                                 match,
+                                 RegexOptions.Compiled,
+                                 matchTimeout ?? TimeSpan.FromSeconds(1))
+                        .Count;
         }
 
         /// <summary>

@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>Pylypeiev.Extensions</id>
-    <version>1.2.5</version>
+    <version>1.2.6</version>
     <authors>Yakov Pylypeiev</authors>
     <owners>Yakov Pylypeiev</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
     <description>My C# Extension methods for collections and POCO objects</description>
-    <releaseNotes>String.Contains with StringComparison parameter added</releaseNotes>
+    <releaseNotes>ReDoS. Added optional parameter to specify regex match timeout in ALL methods that uses Regex.</releaseNotes>
     <copyright>Copyright 2020</copyright>
 	 <dependencies>
       <group targetFramework=".NETFramework4.5.1" />

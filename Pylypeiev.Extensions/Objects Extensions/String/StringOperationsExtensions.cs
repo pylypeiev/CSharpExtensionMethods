@@ -58,13 +58,20 @@ namespace Pylypeiev.Extensions
             return new string(array);
         }
 
-        /// <summary>
-        /// Split CamelCase words
-        /// </summary>
+        /// <summary>Split CamelCase words</summary>
+        /// <param name="matchTimeout">optional parameter for REGEX match timeout, if not provided 1 second is set </param>
         /// <returns>split words</returns>
-        public static string SplitCamelCase(this string str)
+        /// <exception cref="RegexMatchTimeoutException">
+        /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
+        /// </exception>
+        public static string SplitCamelCase(this string str, TimeSpan? matchTimeout = null)
         {
-            return Regex.Replace(str, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
+            return Regex.Replace(str,
+                                 "([A-Z])",
+                                 " $1",
+                                 RegexOptions.Compiled,
+                                 matchTimeout ?? TimeSpan.FromSeconds(1))
+                        .Trim();
         }
 
         /// <summary>
@@ -104,7 +111,6 @@ namespace Pylypeiev.Extensions
 
             return input.ToLower();
         }
-
 
         /// <summary>Performs ToLower() only if input is not null</summary>
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
