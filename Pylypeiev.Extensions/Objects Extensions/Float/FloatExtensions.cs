@@ -62,7 +62,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Multiply this number by given number</summary>
         public static float MultiplyBy(this float value, float value2)
         {
-            return value / value2;
+            return value * value2;
         }
     }
 }

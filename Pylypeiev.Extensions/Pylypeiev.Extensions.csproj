@@ -1,75 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68098570-3724-4CD6-9E66-ACEF5E2B94EA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pylypeiev.Extensions</RootNamespace>
-    <AssemblyName>Pylypeiev.Extensions</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>netstandard2.0;net451;net5.0</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <NoWarn>1701;1702;CA1031;</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MustHavePack.cs" />
-    <Compile Include="Minimal Pack.cs" />
-    <Compile Include="Objects Extensions\ByteArray\ByteArrayExtensions.cs" />
-    <Compile Include="Collections extensions\ArrayExtensions.cs" />
-    <Compile Include="Collections extensions\DictionaryExtensions.cs" />
-    <Compile Include="Collections extensions\ICollectionExtensions.cs" />
-    <Compile Include="Collections extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Collections extensions\IListExtensions.cs" />
-    <Compile Include="Objects Extensions\Decimal\DecimalExtensions.cs" />
-    <Compile Include="Objects Extensions\Double\DoubleExtensions.cs" />
-    <Compile Include="Objects Extensions\Char\CharExtensions.cs" />
-    <Compile Include="Objects Extensions\Exception\ExceptionExtensions.cs" />
-    <Compile Include="Objects Extensions\Float\FloatExtensions.cs" />
-    <Compile Include="Objects Extensions\Int\IntExtensions.cs" />
-    <Compile Include="Objects Extensions\DateTime\DateTimeExtensions.cs" />
-    <Compile Include="Objects Extensions\Long\LongExtensions.cs" />
-    <Compile Include="Objects Extensions\Object\ObjectExtensions.cs" />
-    <Compile Include="Objects Extensions\Object\ObjectGeneralExtensions.cs" />
-    <Compile Include="Objects Extensions\String\StringEncodingExtensions.cs" />
-    <Compile Include="Objects Extensions\String\StringIOExtensions.cs" />
-    <Compile Include="Objects Extensions\String\StringOperationsExtensions.cs" />
-    <Compile Include="Objects Extensions\String\StringSearchingExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects Extensions\String\StringParsingExtensions.cs" />
-    <Compile Include="Objects Extensions\Bool\BoolExtensions.cs" />
-    <Compile Include="XML Extensions\XmlExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

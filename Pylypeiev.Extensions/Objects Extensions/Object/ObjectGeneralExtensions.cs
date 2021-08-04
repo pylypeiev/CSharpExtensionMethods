@@ -13,7 +13,9 @@ namespace Pylypeiev.Extensions
         public static void IfNotNull<T>(this T obj, Action<T> action) where T : class
         {
             if (obj != null)
+            {
                 action(obj);
+            }
         }
 
         /// <summary>Perform function on the object if it not null</summary>
@@ -47,7 +49,11 @@ namespace Pylypeiev.Extensions
         /// <returns>true if object is contained in sequence, otherwise - false</returns>
         public static bool IsIn<T>(this T obj, params T[] sequence)
         {
-            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj == null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
             return sequence.Contains(obj);
         }
 

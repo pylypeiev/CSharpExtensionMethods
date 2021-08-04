@@ -95,7 +95,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Multiply this number by given number</summary>
         public static decimal MultiplyBy(this decimal value, decimal value2)
         {
-            return value / value2;
+            return value * value2;
         }
     }
 }

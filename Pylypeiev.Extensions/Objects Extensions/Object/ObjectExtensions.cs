@@ -14,6 +14,11 @@ namespace Pylypeiev.Extensions
         {
             var dictionary = new Dictionary<string, string>();
 
+            if (obj.IsNull())
+            {
+                return dictionary;
+            }
+
             Type objectType = obj.GetType();
 
             foreach (PropertyInfo prop in new List<PropertyInfo>(objectType.GetProperties()))
@@ -29,8 +34,13 @@ namespace Pylypeiev.Extensions
         /// <param name="propNameValueSeparator">separator between property and value</param>
         /// <param name="propsSeparator">separator between different properties</param>
         /// <returns>string with properties and values separated with provided symbols</returns>
-        public static string GetPropertiesWithValues(this object obj, string propNameValueSeparator = " = ", string propsSeparator = ", ")
+        public static string GetPropertiesWithValues(this object obj, string propNameValueSeparator, string propsSeparator = ", ")
         {
+            if (obj.IsNull())
+            {
+                return string.Empty;
+            }
+
             var sb = new StringBuilder();
 
             var objectType = obj.GetType();

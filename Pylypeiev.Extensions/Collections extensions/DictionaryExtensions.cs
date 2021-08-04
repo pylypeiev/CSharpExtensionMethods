@@ -12,7 +12,7 @@ namespace Pylypeiev.Extensions
         /// <returns> True if added to dictionary, otherwise, false. </returns>
         public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
-            if (!dict.ContainsKey(key))
+            if (dict?.ContainsKey(key) == false)
             {
                 dict.Add(key, value);
                 return true;
@@ -29,6 +29,11 @@ namespace Pylypeiev.Extensions
         /// <returns> Element on dictionary on provided key. </returns>
         public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
+            if (dict == null || key == null)
+            {
+                return default;
+            }
+
             if (!dict.ContainsKey(key))
             {
                 dict.Add(new KeyValuePair<TKey, TValue>(key, value));
@@ -48,12 +53,16 @@ namespace Pylypeiev.Extensions
         public static List<Tuple<TKey, TValue>> ToTuple<TKey, TValue>(this Dictionary<TKey, TValue> dict)
         {
             if (dict == null || dict.Count == 0)
+            {
                 return new List<Tuple<TKey, TValue>>(0);
+            }
 
             var tuples = new List<Tuple<TKey, TValue>>(dict.Count);
 
             foreach (var val in dict)
+            {
                 tuples.Add(Tuple.Create(val.Key, val.Value));
+            }
 
             return tuples;
         }
@@ -65,7 +74,10 @@ namespace Pylypeiev.Extensions
         /// <returns>  Get an element with provided key if this key is exist, otherwise default value </returns>
         public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue defaultValue)
         {
-            if (dict.TryGetValue(key, out TValue value)) return value;
+            if (dict.TryGetValue(key, out TValue value))
+            {
+                return value;
+            }
 
             return defaultValue;
         }

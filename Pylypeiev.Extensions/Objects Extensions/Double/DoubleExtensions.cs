@@ -68,7 +68,7 @@ namespace Pylypeiev.Extensions
         /// </summary>
         /// <param name="doubles">The number of fractional digits in the return value.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">doubles is less than 0 or greater than 15</exception>
-        public static double Round(this double d, Int32 doubles)
+        public static double Round(this double d, int doubles)
         {
             return Math.Round(d, doubles);
         }
@@ -94,7 +94,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Multiply this number by given number</summary>
         public static double MultiplyBy(this double value, double value2)
         {
-            return value / value2;
+            return value * value2;
         }
     }
 }

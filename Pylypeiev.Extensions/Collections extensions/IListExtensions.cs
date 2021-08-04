@@ -11,6 +11,11 @@ namespace Pylypeiev.Extensions
         /// <returns>List with chunked lists</returns>
         public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
         {
+            if (source == null)
+            {
+                return new List<List<T>>(0);
+            }
+
             return source
                 .Select((x, i) => new { Index = i, Value = x })
                 .GroupBy(x => x.Index / chunkSize)
@@ -22,9 +27,16 @@ namespace Pylypeiev.Extensions
         /// <returns>cloned new IList</returns>
         public static IList<T> Clone<T>(this IList<T> list) where T : ICloneable
         {
+            if (list == null)
+            {
+                return new List<T>(0);
+            }
+
             var cloned = new List<T>(list.Count);
             foreach (var item in list)
+            {
                 cloned.Add((T)item.Clone());
+            }
 
             return cloned;
         }
@@ -35,6 +47,11 @@ namespace Pylypeiev.Extensions
         /// <returns>this collection</returns>
         public static TList Push<TList, TItem>(this TList list, TItem item) where TList : IList<TItem>
         {
+            if (list == null)
+            {
+                return default;
+            }
+
             list.Add(item);
             return list;
         }
@@ -42,11 +59,14 @@ namespace Pylypeiev.Extensions
         /// <summary>
         /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
+        /// <returns>all permutations for this List, or empty collection if the list is null</returns>
         public static List<List<T>> GetPermutations<T>(this List<T> list)
         {
+            if (list == null)
+            {
+                return new List<List<T>>(0);
+            }
+
             var result = new List<List<T>>();
             if (list.Count == 1)
             {

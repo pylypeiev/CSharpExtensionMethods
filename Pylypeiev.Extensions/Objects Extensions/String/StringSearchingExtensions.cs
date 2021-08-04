@@ -14,7 +14,10 @@ namespace Pylypeiev.Extensions
         /// <returns>true if matches, otherwise - false, if some of the strings are null - false</returns>
         public static bool EndsWithIgnoreCase(this string a, string b)
         {
-            if (a == null || b == null) return false;
+            if (a == null || b == null)
+            {
+                return false;
+            }
 
             return a.EndsWith(b, StringComparison.OrdinalIgnoreCase);
         }
@@ -48,7 +51,10 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static bool IsAlpha(this string str, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return !Regex.IsMatch(str,
                                   "[^a-zA-Z]",
@@ -64,23 +70,15 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static bool IsAlphaNumeric(this string str, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return !Regex.IsMatch(str,
                                   "[^a-zA-Z0-9]",
                                   RegexOptions.Compiled,
                                   matchTimeout ?? TimeSpan.FromSeconds(1));
-        }
-
-        /// <summary>Determines if this string is an anagram</summary>
-        /// <returns>true if this string is an anagram, otherwise - false, if one of the strings are null - false</returns>
-        public static bool IsAnagram(this string thisString, string otherString)
-        {
-            if (string.IsNullOrWhiteSpace(thisString) || string.IsNullOrWhiteSpace(otherString)) return false;
-
-            return thisString
-                .OrderBy(c => c)
-                .SequenceEqual(otherString.OrderBy(c => c));
         }
 
         /// <summary>Indicates whether this string is null or an empty string</summary>
@@ -105,7 +103,10 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static bool IsNumeric(this string str, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return !Regex.IsMatch(str,
                                  "[^0-9]",
@@ -117,7 +118,10 @@ namespace Pylypeiev.Extensions
         /// <returns>true if this string is a palindrome, otherwise - false, If the string is null - false</returns>
         public static bool IsPalindrome(this string str)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return str.SequenceEqual(str.Reverse());
         }
@@ -130,7 +134,10 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static bool IsValidEmail(this string str, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return Regex.IsMatch(str,
                                 @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z0-9]{1,30})(\]?)$",
@@ -146,7 +153,10 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static bool IsValidIP(this string str, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
 
             return Regex.IsMatch(str,
                                 @"^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$",
@@ -162,14 +172,21 @@ namespace Pylypeiev.Extensions
         /// <returns>index, or -1 if not matches</returns>
         public static int NthIndexOf(this string str, string match, int occurrenceNum)
         {
-            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match)) return -1;
+            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match))
+            {
+                return -1;
+            }
 
             int i = 1;
             int index = 0;
 
             while (i <= occurrenceNum && (index = str.IndexOf(match, index + 1)) != -1)
             {
-                if (i == occurrenceNum) return index;
+                if (i == occurrenceNum)
+                {
+                    return index;
+                }
+
                 i++;
             }
             return -1;
@@ -184,7 +201,10 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static int OccurrenceNum(this string str, string match, TimeSpan? matchTimeout = null)
         {
-            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match)) return 0;
+            if (string.IsNullOrEmpty(str) || string.IsNullOrEmpty(match))
+            {
+                return 0;
+            }
 
             return Regex.Matches(str,
                                  match,
@@ -201,7 +221,10 @@ namespace Pylypeiev.Extensions
         /// <returns>true if matches, otherwise - false, if some of the strings are null - false</returns>
         public static bool StartsWithIgnoreCase(this string a, string b)
         {
-            if (a == null || b == null) return false;
+            if (a == null || b == null)
+            {
+                return false;
+            }
 
             return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
         }
@@ -210,9 +233,14 @@ namespace Pylypeiev.Extensions
         /// <param name="value"> The string to seek</param>
         /// <param name="stringComparison">One of the enumeration values that determines how this string and value are compared.</param>
         /// <returns>true if the value parameter occurs within this string, otherwise - false.</returns>
-        public static bool Contains(this string str, string value, StringComparison stringComparison)
+        public static bool ContainsInvariantSafe(this string str, string value, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
-            return str?.IndexOf(value, stringComparison) >= 0;
+            if (str == null || value == null)
+            {
+                return false;
+            }
+
+            return str.IndexOf(value, stringComparison) >= 0;
         }
     }
 }

@@ -10,7 +10,10 @@ namespace Pylypeiev.Extensions
         /// <returns> base64 string representation, if array is empty - returns empty string </returns>
         public static string ToBase64String(this byte[] arr)
         {
-            if (arr == null || arr.Length == 0) return string.Empty;
+            if (arr == null || arr.Length == 0)
+            {
+                return string.Empty;
+            }
 
             return Convert.ToBase64String(arr);
         }

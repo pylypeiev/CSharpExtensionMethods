@@ -18,7 +18,11 @@ namespace Pylypeiev.Extensions
         public static int CalculateAge(this DateTime dateTime)
         {
             var age = DateTime.Now.Year - dateTime.Year;
-            if (DateTime.Now < dateTime.AddYears(age)) age--;
+            if (DateTime.Now < dateTime.AddYears(age))
+            {
+                age--;
+            }
+
             return age;
         }
 

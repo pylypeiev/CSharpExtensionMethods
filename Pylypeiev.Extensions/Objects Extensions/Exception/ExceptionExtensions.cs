@@ -12,8 +12,10 @@ namespace Pylypeiev.Extensions
         public static Exception GetInnermostException(this Exception ex)
         {
             var innerMostException = ex;
-            while (innerMostException.InnerException != null)
+            while (innerMostException?.InnerException != null)
+            {
                 innerMostException = innerMostException.InnerException;
+            }
 
             return innerMostException;
         }

@@ -10,48 +10,88 @@ namespace Pylypeiev.Extensions.Xml
     public static class XmlExtensions
     {
         /// <summary>Convert to Stream</summary>
+        /// <returns>xml in stream if succeeded, otherwise - null</returns>
         public static Stream ToStream(this XmlDocument doc)
         {
+            if (doc == null)
+            {
+                return null;
+            }
+
             var xmlStream = new MemoryStream();
-            doc.Save(xmlStream);
-            xmlStream.Flush();
-            xmlStream.Position = 0;
-            return xmlStream;
+            try
+            {
+                doc.Save(xmlStream);
+                xmlStream.Flush();
+                xmlStream.Position = 0;
+                return xmlStream;
+            }
+            catch { return null; }
         }
 
         /// <summary>Convert to XDocument</summary>
-        public static XDocument ToXDocument(this XmlDocument xmlDocument)
+        /// <returns>xml in xDocument object if succeeded, otherwise - null</returns>
+        public static XDocument ToXDocument(this XmlDocument doc)
         {
-            using (var nodeReader = new XmlNodeReader(xmlDocument))
+            if (doc == null)
             {
-                nodeReader.MoveToContent();
-                return XDocument.Load(nodeReader);
+                return null;
             }
+
+            try
+            {
+                using (var nodeReader = new XmlNodeReader(doc))
+                {
+                    nodeReader.MoveToContent();
+                    return XDocument.Load(nodeReader);
+                }
+            }
+            catch { return null; }
         }
 
         /// <summary>Convert to XmlDocument</summary>
-        public static XmlDocument ToXmlDocument(this XDocument xDocument)
+        /// <returns>xml in xmlDocument object if succeeded, if object is empty - default, otherwise - null</returns>
+        public static XmlDocument ToXmlDocument(this XDocument doc)
         {
+            if (doc == null)
+            {
+                return null;
+            }
+
             var xmlDocument = new XmlDocument();
 
-            using (var xmlReader = xDocument.CreateReader())
+            using (var xmlReader = doc.CreateReader())
+            {
                 xmlDocument.Load(xmlReader);
+            }
 
             return xmlDocument;
         }
 
         /// <summary>Convert to XmlDocument</summary>
+        /// <returns>xml in xmlDocument object if succeeded, otherwise - null</returns>
         public static XmlDocument ToXmlDocument(this XElement xElement)
         {
-            var sb = new StringBuilder();
-            var xws = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = false };
+            if (xElement == null)
+            {
+                return null;
+            }
 
-            using (var xw = XmlWriter.Create(sb, xws))
-                xElement.WriteTo(xw);
+            try
+            {
+                var sb = new StringBuilder();
+                var xws = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = false };
 
-            var doc = new XmlDocument();
-            doc.LoadXml(sb.ToString());
-            return doc;
+                using (var xw = XmlWriter.Create(sb, xws))
+                {
+                    xElement.WriteTo(xw);
+                }
+
+                var doc = new XmlDocument();
+                doc.LoadXml(sb.ToString());
+                return doc;
+            }
+            catch { return null; }
         }
 
         /// <summary>
@@ -62,7 +102,9 @@ namespace Pylypeiev.Extensions.Xml
         public static T TryXmlDeserialize<T>(this string xmlData, T defaultValue = default)
         {
             if (string.IsNullOrWhiteSpace(xmlData))
-                return !defaultValue.Equals(default) ? defaultValue : default;
+            {
+                return !defaultValue?.Equals(default) ?? default ? defaultValue : default;
+            }
 
             var serializer = new XmlSerializer(typeof(T));
             using (TextReader reader = new StringReader(xmlData))
@@ -71,9 +113,9 @@ namespace Pylypeiev.Extensions.Xml
                 {
                     return (T)serializer.Deserialize(reader);
                 }
-                catch (Exception)
+                catch
                 {
-                    return !defaultValue.Equals(default) ? defaultValue : default;
+                    return !defaultValue?.Equals(default) ?? default ? defaultValue : default;
                 }
             }
         }
@@ -82,25 +124,12 @@ namespace Pylypeiev.Extensions.Xml
         /// <returns>XML in a string, if the object is null - an empty string</returns>
         public static string XmlSerialize<T>(this T item)
         {
-            if (item == null) return string.Empty;
+            if (item == null)
+            {
+                return string.Empty;
+            }
 
             var serializer = new XmlSerializer(typeof(T));
-            var stringBuilder = new StringBuilder();
-            using (var writer = new StringWriter(stringBuilder))
-            {
-                serializer.Serialize(writer, item);
-            }
-            return stringBuilder.ToString();
-        }
-
-        /// <summary>Serialize this object to XML via XmlSerializer</summary>
-        /// <returns>XML in a string, if the object is null - an empty string</returns>
-        public static string XmlSerialize(this object item)
-        {
-            if (item == null) return string.Empty;
-
-            Type type = item.GetType();
-            var serializer = new XmlSerializer(type);
             var stringBuilder = new StringBuilder();
             using (var writer = new StringWriter(stringBuilder))
             {

@@ -2,9 +2,7 @@
 My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
-### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Minimal%20Pack.cs) a minimal pack.
-### or [ COPY ](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/MustHavePack.cs) a must-have pack (a preferred choice).
-
+### or get [ minimal pack ](https://github.com/pylypeiev/CSharpExtensionMethods.MinimalPack)
 
 ## Table of Contents:
 #### Collections extension methods (Namespace - Pylypeiev.Extensions):
@@ -217,7 +215,6 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [IfNullThen](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if the string is null or whitespace if yes returns nullAlternateValue
 - [IsAlpha](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if this string contains only English letters 
 - [IsAlphaNumeric](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if this string contains only English letters and digits
-- [IsAnagram](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if this string is an anagram
 - [IsNullOrEmpty](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Indicates whether this string is null or an empty string
 - [IsNullOrWhiteSpace](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Indicates whether this string is null, empty, or consists only of white-space characters 
 - [IsNumeric](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines if this string contains only digits
@@ -227,7 +224,7 @@ My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 - [NthIndexOf](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the index of matched string regards to occurrenceNum
 - [OccurrenceNum](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Reports the numbers of matches in this string
 - [StartsWithIgnoreCase](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - Determines whether the beginning of this string matches the specified string
-- [Contains](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - String.Contains with StringComparison parameter 
+- [ContainsInvariantSafe](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringSearchingExtensions.cs) - String.Contains with StringComparison parameter 
 - [SaveAs](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/String/StringIOExtensions.cs) - write string to file
 
 <a name="char"></a>

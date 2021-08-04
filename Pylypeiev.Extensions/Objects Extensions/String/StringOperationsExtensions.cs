@@ -13,7 +13,10 @@ namespace Pylypeiev.Extensions
         /// <returns>substring</returns>
         public static string RemoveFirst(this string str, int number)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             return str.Substring(number);
         }
@@ -22,7 +25,10 @@ namespace Pylypeiev.Extensions
         /// <returns>substring without first character</returns>
         public static string RemoveFirstCharacter(this string str)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             return str.Substring(1);
         }
@@ -33,7 +39,10 @@ namespace Pylypeiev.Extensions
         /// <returns>substring</returns>
         public static string RemoveLast(this string str, int number)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             return str.Substring(0, str.Length - number);
         }
@@ -42,7 +51,10 @@ namespace Pylypeiev.Extensions
         /// <returns>substring without last character</returns>
         public static string RemoveLastCharacter(this string str)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             return str.Substring(0, str.Length - 1);
         }
@@ -51,7 +63,10 @@ namespace Pylypeiev.Extensions
         /// <returns> reversed string </returns>
         public static string Reverse(this string str)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             char[] array = str.ToCharArray();
             Array.Reverse(array);
@@ -66,6 +81,11 @@ namespace Pylypeiev.Extensions
         /// </exception>
         public static string SplitCamelCase(this string str, TimeSpan? matchTimeout = null)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
+
             return Regex.Replace(str,
                                  "([A-Z])",
                                  " $1",
@@ -88,6 +108,11 @@ namespace Pylypeiev.Extensions
         /// <returns>The specified string converted to title case.</returns>
         public static string ToTitleCase(this string str)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
+
             var cultureInfo = Thread.CurrentThread.CurrentCulture;
             return cultureInfo.TextInfo.ToTitleCase(str.ToLower());
         }
@@ -99,7 +124,10 @@ namespace Pylypeiev.Extensions
         ///</returns>
         public static string TrimSafe(this string str)
         {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return string.Empty;
+            }
 
             return str.Trim();
         }
@@ -107,7 +135,10 @@ namespace Pylypeiev.Extensions
         /// <returns>The lowercase equivalent of the current string or string.Empty if input is null</returns>
         public static string ToLowerSafe(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToLower();
         }
@@ -118,7 +149,10 @@ namespace Pylypeiev.Extensions
         //     of the specified culture  or string.Empty if input is null</returns>
         public static string ToLowerSafe(this string input, CultureInfo culture)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToLower(culture);
         }
@@ -129,7 +163,10 @@ namespace Pylypeiev.Extensions
         //     of the invariant culture or string.Empty if input is null</returns>
         public static string ToLowerInvariantSafe(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToLowerInvariant();
         }
@@ -138,7 +175,10 @@ namespace Pylypeiev.Extensions
         /// <returns>The uppercase equivalent of the current string  or string.Empty if input is null</returns>
         public static string ToUpperSafe(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToUpper();
         }
@@ -149,7 +189,10 @@ namespace Pylypeiev.Extensions
         //     of the specified culture. or string.Empty if input is null</returns>
         public static string ToUpperSafe(this string input, CultureInfo culture)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToUpper(culture);
         }
@@ -160,7 +203,10 @@ namespace Pylypeiev.Extensions
         //     of the invariant culture or string.Empty if input is null</returns>
         public static string ToUpperInvariantSafe(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
 
             return input.ToUpperInvariant();
         }

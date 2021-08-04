@@ -13,39 +13,12 @@ namespace Pylypeiev.Extensions
         /// index is less than the lower bound of array. -or- length is less than zero. -or-
         /// The sum of index and length is greater than the size of array.
         /// </exception>
-        public static void ClearAll(this Array arr)
-        {
-            Array.Clear(arr, 0, arr.Length);
-        }
-
-        /// <summary>
-        /// Sets a range of elements in an array to the default value of each element type.
-        /// </summary>
-        /// <exception cref="System.ArgumentNullException">if array is null</exception>
-        /// <exception cref="System.IndexOutOfRangeException">
-        /// index is less than the lower bound of array. -or- length is less than zero. -or-
-        /// The sum of index and length is greater than the size of array.
-        /// </exception>
         public static void ClearAll<T>(this T[] arr)
         {
-            Array.Clear(arr, 0, arr.Length);
-        }
-
-        /// <summary>
-        /// Concatenates the elements of an object array, using the specified separator between each element
-        /// </summary>
-        /// <param name="separator">
-        /// The string to use as a separator. separator is included in the returned string
-        /// only if values has more than one element/
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">if values is null</exception>
-        /// <returns>
-        /// A string that consists of the elements of values delimited by the separator string.
-        /// If values is an empty array, the method returns System.String.Empty.
-        /// </returns>
-        public static string Join(this Array array, string separator)
-        {
-            return string.Join(separator, array);
+            if (arr != null)
+            {
+                Array.Clear(arr, 0, arr.Length);
+            }
         }
 
         /// <summary>
@@ -62,6 +35,11 @@ namespace Pylypeiev.Extensions
         /// </returns>
         public static string Join<T>(this T[] array, string separator)
         {
+            if (array == null)
+            {
+                return string.Empty;
+            }
+
             return string.Join(separator, array);
         }
 
@@ -70,7 +48,10 @@ namespace Pylypeiev.Extensions
         /// <returns>The <see cref="string"/> representation of the array in format [1, 2, 3] and [] if it is null</returns>
         public static string ToArrayString<T>(this T[] arr)
         {
-            if (arr == null) return "[]";
+            if (arr == null)
+            {
+                return "[]";
+            }
 
             var sb = new StringBuilder();
 
@@ -78,7 +59,10 @@ namespace Pylypeiev.Extensions
 
             for (int i = 0; i < arr.Length; i++)
             {
-                if (i != 0) sb.Append(",\t");
+                if (i != 0)
+                {
+                    sb.Append(",\t");
+                }
 
                 sb.Append(arr[i]?.ToString());
             }
@@ -93,7 +77,10 @@ namespace Pylypeiev.Extensions
         /// <returns>String representation of the array. in format [1, 2, 3] and [] if it is null</returns>
         public static string ToArrayString<T>(this T[][] arr)
         {
-            if (arr == null) return "[]";
+            if (arr == null)
+            {
+                return "[]";
+            }
 
             var sb = new StringBuilder();
 
@@ -114,7 +101,10 @@ namespace Pylypeiev.Extensions
 
                 for (int j = 0; j < row.Length; j++)
                 {
-                    if (j != 0) sb.Append(",\t");
+                    if (j != 0)
+                    {
+                        sb.Append(",\t");
+                    }
 
                     sb.Append(row[j]?.ToString());
                 }
@@ -132,7 +122,10 @@ namespace Pylypeiev.Extensions
         /// <returns>The <see cref="string"/> representation of the array in format [[1,2],[3,4]] and [] if it is null</returns>
         public static string ToArrayString<T>(this T[,] arr)
         {
-            if (arr == null) return "[]";
+            if (arr == null)
+            {
+                return "[]";
+            }
 
             var sb = new StringBuilder();
 
@@ -155,7 +148,10 @@ namespace Pylypeiev.Extensions
 
                 for (int j = 0; j < width; j++)
                 {
-                    if (j != 0) sb.Append(",\t");
+                    if (j != 0)
+                    {
+                        sb.Append(",\t");
+                    }
 
                     sb.Append(arr[i, j]?.ToString());
                 }

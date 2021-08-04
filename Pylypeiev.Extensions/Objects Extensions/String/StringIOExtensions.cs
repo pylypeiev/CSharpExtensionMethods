@@ -11,12 +11,17 @@ namespace Pylypeiev.Extensions
         /// <returns>true if succeeded to write to file, otherwise - false</returns>
         public static bool SaveAs(this string str, string path, bool append = false)
         {
-            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(path)) return false;
+            if (string.IsNullOrWhiteSpace(str) || string.IsNullOrWhiteSpace(path))
+            {
+                return false;
+            }
 
             try
             {
                 using (var tw = new StreamWriter(path, append))
+                {
                     tw.Write(str);
+                }
 
                 return true;
             }
@@ -32,12 +37,17 @@ namespace Pylypeiev.Extensions
         /// <returns>true if succeeded to write to file, otherwise - false</returns>
         public static bool SaveAs(this string str, FileInfo fileInfo, bool append = false)
         {
-            if (string.IsNullOrWhiteSpace(str) || fileInfo == null || string.IsNullOrWhiteSpace(fileInfo.FullName)) return false;
+            if (string.IsNullOrWhiteSpace(str) || fileInfo == null || string.IsNullOrWhiteSpace(fileInfo.FullName))
+            {
+                return false;
+            }
 
             try
             {
                 using (var tw = new StreamWriter(fileInfo.FullName, append))
+                {
                     tw.Write(str);
+                }
 
                 return true;
             }

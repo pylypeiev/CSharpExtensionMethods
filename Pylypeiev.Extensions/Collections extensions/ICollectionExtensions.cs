@@ -11,7 +11,7 @@ namespace Pylypeiev.Extensions
         /// <returns> True if added to collection, otherwise, false. </returns>
         public static bool AddIfNotContains<T>(this ICollection<T> collection, T value)
         {
-            if (!collection.Contains(value))
+            if (collection?.Contains(value) == false)
             {
                 collection.Add(value);
                 return true;
@@ -24,8 +24,13 @@ namespace Pylypeiev.Extensions
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         public static void AddRange<T>(this ICollection<T> collection, params T[] values)
         {
-            foreach (T value in values)
-                collection.Add(value);
+            if (collection != null && values != null)
+            {
+                foreach (T value in values)
+                {
+                    collection.Add(value);
+                }
+            }
         }
 
         /// <summary>Adds the elements of the specified IEnumerable to the end of the collection</summary>
@@ -33,15 +38,13 @@ namespace Pylypeiev.Extensions
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable values)
         {
-            foreach (T value in values)
-                collection.Add(value);
-        }
-
-        /// <summary> Check if collection is null or empty </summary>
-        /// <returns>true if collection is not null and not empty, otherwise - false</returns>
-        public static bool IsNullOrEmpty(this ICollection obj)
-        {
-            return obj == null || obj.Count == 0;
+            if (collection != null && values != null)
+            {
+                foreach (T value in values)
+                {
+                    collection.Add(value);
+                }
+            }
         }
 
         /// <summary> Check if collection is null or empty </summary>
@@ -56,8 +59,13 @@ namespace Pylypeiev.Extensions
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         public static void RemoveRange<T>(this ICollection<T> collection, params T[] values)
         {
-            foreach (T value in values)
-                collection.Remove(value);
+            if (collection != null && values != null)
+            {
+                foreach (T value in values)
+                {
+                    collection.Remove(value);
+                }
+            }
         }
 
         /// <summary>Removes a range of elements from collection</summary>
@@ -65,8 +73,13 @@ namespace Pylypeiev.Extensions
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         public static void RemoveRange<T>(this ICollection<T> collection, IEnumerable values)
         {
-            foreach (T value in values)
-                collection.Remove(value);
+            if (collection != null && values != null)
+            {
+                foreach (T value in values)
+                {
+                    collection.Remove(value);
+                }
+            }
         }
     }
 }

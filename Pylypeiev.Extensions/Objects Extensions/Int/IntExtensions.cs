@@ -36,6 +36,7 @@ namespace Pylypeiev.Extensions
         }
 
         /// <summary>Format file size in KB/MB/GB/TB/PB/EB</summary>
+        /// <param name="size">size in bytes</param>
         /// <returns>string representation of file size</returns>
         public static string ToFileSize(this int size)
         {
@@ -69,7 +70,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Multiply this number by given number</summary>
         public static int MultiplyBy(this int value, int value2)
         {
-            return value / value2;
+            return value * value2;
         }
     }
 }

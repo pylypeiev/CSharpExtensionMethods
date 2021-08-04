@@ -10,7 +10,9 @@ namespace Pylypeiev.Extensions
         public static DateTime? ToDateTime(this string str)
         {
             if (DateTime.TryParse(str, out DateTime date))
+            {
                 return date;
+            }
 
             return null;
         }
@@ -21,7 +23,9 @@ namespace Pylypeiev.Extensions
         public static DateTime ToDateTime(this string str, DateTime defaultValue)
         {
             if (DateTime.TryParse(str, out DateTime date))
+            {
                 return date;
+            }
 
             return defaultValue;
         }
@@ -32,7 +36,10 @@ namespace Pylypeiev.Extensions
         public static decimal ToDecimal(this string input, decimal defaultValue = 0)
         {
             if (!decimal.TryParse(input, out decimal result))
+            {
                 result = defaultValue;
+            }
+
             return result;
         }
 
@@ -42,7 +49,10 @@ namespace Pylypeiev.Extensions
         public static double ToDouble(this string input, double defaultValue = 0)
         {
             if (!double.TryParse(input, out double result))
+            {
                 result = defaultValue;
+            }
+
             return result;
         }
 
@@ -52,7 +62,10 @@ namespace Pylypeiev.Extensions
         public static float ToFloat(this string input, float defaultValue = 0)
         {
             if (!float.TryParse(input, out float result))
+            {
                 result = defaultValue;
+            }
+
             return result;
         }
 
@@ -62,7 +75,10 @@ namespace Pylypeiev.Extensions
         public static int ToInt(this string input, int defaultValue = 0)
         {
             if (!int.TryParse(input, out int result))
+            {
                 result = defaultValue;
+            }
+
             return result;
         }
 
@@ -72,7 +88,10 @@ namespace Pylypeiev.Extensions
         public static long ToLong(this string input, long defaultValue = 0)
         {
             if (!long.TryParse(input, out long result))
+            {
                 result = defaultValue;
+            }
+
             return result;
         }
 
@@ -82,10 +101,15 @@ namespace Pylypeiev.Extensions
         /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
         public static byte[] ToByteArray(this string str, Encoding encoding = null)
         {
-            if (string.IsNullOrEmpty(str)) return new byte[0];
+            if (string.IsNullOrEmpty(str))
+            {
+                return new byte[0];
+            }
 
             if (encoding == null)
+            {
                 encoding = Encoding.UTF8;
+            }
 
             return encoding.GetBytes(str);
         }

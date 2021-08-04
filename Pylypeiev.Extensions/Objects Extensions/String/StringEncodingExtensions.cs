@@ -9,7 +9,10 @@ namespace Pylypeiev.Extensions
         /// <returns>Decoded string, if string is empty/whitespace - empty string </returns>
         public static string DecodeBase64(this string str)
         {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return string.Empty;
+            }
 
             return Encoding.UTF8.GetString(Convert.FromBase64String(str));
         }
@@ -18,7 +21,10 @@ namespace Pylypeiev.Extensions
         /// <returns> base64 string representation, if string is empty/whitespace - empty string </returns>
         public static string EncodeBase64(this string str)
         {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return string.Empty;
+            }
 
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
         }
@@ -29,16 +35,23 @@ namespace Pylypeiev.Extensions
         /// <returns>MD5 hash in hexadecimal format. If string is null or empty - empty string</returns>
         public static string ToMd5(this string str, Encoding encoding = null)
         {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
 
             if (encoding == null)
+            {
                 encoding = Encoding.UTF8;
+            }
 
             var stringBuilder = new StringBuilder(32);
             using (var md5 = System.Security.Cryptography.MD5.Create())
             {
                 foreach (byte num in md5.ComputeHash(encoding.GetBytes(str)))
+                {
                     stringBuilder.Append(num.ToString("x2"));
+                }
             }
             return stringBuilder.ToString();
         }

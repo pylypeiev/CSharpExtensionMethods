@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,25 +13,38 @@ namespace Pylypeiev.Extensions
         public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T element)
         {
             foreach (var item in source)
+            {
                 yield return item;
+            }
+
             yield return element;
         }
 
         /// <summary> Check if all elements in IEnumerable are equals </summary>
+        /// <exception cref="System.ArgumentNullException">enumerable is null</exception>
         /// <returns>true if they are equals, otherwise - false</returns>
         public static bool AreAllSame<T>(this IEnumerable<T> enumerable)
         {
-            if (enumerable == null) throw new ArgumentNullException(nameof(enumerable));
+            if (enumerable == null)
+            {
+                throw new ArgumentNullException(nameof(enumerable));
+            }
 
             using (var enumerator = enumerable.GetEnumerator())
             {
                 var toCompare = default(T);
                 if (enumerator.MoveNext())
+                {
                     toCompare = enumerator.Current;
+                }
 
                 while (enumerator.MoveNext())
+                {
                     if (toCompare != null && !toCompare.Equals(enumerator.Current))
+                    {
                         return false;
+                    }
+                }
             }
 
             return true;
@@ -48,7 +60,9 @@ namespace Pylypeiev.Extensions
             var sb = new StringBuilder();
 
             foreach (var s in enumerable)
+            {
                 sb.Append(s);
+            }
 
             return sb.ToString();
         }
@@ -63,8 +77,13 @@ namespace Pylypeiev.Extensions
         /// <returns>this IEnuerable</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            foreach (T item in collection)
-                action(item);
+            if (collection != null)
+            {
+                foreach (T item in collection)
+                {
+                    action(item);
+                }
+            }
 
             return collection;
         }
@@ -104,9 +123,14 @@ namespace Pylypeiev.Extensions
         /// A string that consists of the elements of values delimited by the separator string.
         /// If values is an empty IEnumerable, the method returns String.Empty.
         /// </returns>
-        public static string Join<T>(this IEnumerable<T> self, string separator)
+        public static string Join<T>(this IEnumerable<T> source, string separator)
         {
-            return string.Join(separator, self.Select(e => e.ToString()).ToArray());
+            if (source == null)
+            {
+                return string.Empty;
+            }
+
+            return string.Join(separator, source.Select(e => e.ToString()).ToArray());
         }
 
         /// <summary> Add the object at the beginning of IEnumerable </summary>
@@ -116,28 +140,45 @@ namespace Pylypeiev.Extensions
         {
             yield return element;
             foreach (var item in source)
+            {
                 yield return item;
+            }
         }
 
         /// <summary> Shuffle IEnumerable </summary>
-        /// <returns> a random shuffled IEnumerable</returns>
+        /// <returns> a random shuffled IEnumerable or empty collection if source is null</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
+            if (source == null)
+            {
+                return Enumerable.Empty<T>();
+            }
+
             return source.OrderBy(_ => Guid.NewGuid());
         }
 
         /// <summary>Pick a random element from IEnumerable</summary>
-        /// <returns> 1 random element of type T </returns>
+        /// <returns> 1 random element of type T, ot default T if collection is null </returns>
         public static T PickRandom<T>(this IEnumerable<T> source)
         {
+            if (source == null)
+            {
+                return default;
+            }
+
             return source.PickRandom(1).Single();
         }
 
         /// <summary>Pick N random elements from IEnumerable</summary>
         /// <param name="count">number of objects of type T to pick</param>
-        /// <returns> IEnumerable collecting N random element of type T </returns>
+        /// <returns> IEnumerable collecting N random element of type T, or empty enumerable if collection is null </returns>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
+            if (source == null)
+            {
+                return Enumerable.Empty<T>();
+            }
+
             return source.Shuffle().Take(count);
         }
 
@@ -146,13 +187,6 @@ namespace Pylypeiev.Extensions
         public static IEnumerable<T> ThisOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable ?? Enumerable.Empty<T>();
-        }
-
-        /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
-        /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
-        public static IEnumerable ThisOrEmpty(this IEnumerable enumerable)
-        {
-            return enumerable ?? new ArrayList(0);
         }
     }
 }
