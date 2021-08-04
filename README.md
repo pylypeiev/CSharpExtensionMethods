@@ -1,5 +1,7 @@
+<p align="center"> 
 # C# Extension Methods
 My C# Extension methods for collections and POCO objects. Enjoy! :collision:
+</p>
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
 [![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extensions.svg)](https://badge.fury.io/nu/Pylypeiev.Extensions)
