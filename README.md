@@ -1,7 +1,7 @@
 <h1 align="center"> 
 C# Extension Methods
 </h1>
-My C# Extension methods for collections and POCO objects. Enjoy! :collision:
+#My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
