@@ -2,9 +2,9 @@
 My C# Extension methods for collections and POCO objects. Enjoy! :collision:
 
 ## You can install all of them via [ NUGET ](https://www.nuget.org/packages/Pylypeiev.Extensions)  :hammer: 
-[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extension.svg)](https://badge.fury.io/nu/Pylypeiev.Extension)
+[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extensions.svg)](https://badge.fury.io/nu/Pylypeiev.Extensions)
 ### or get [ minimal pack ](https://github.com/pylypeiev/CSharpExtensionMethods.MinimalPack)
-[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extension.MinimalPack.svg)](https://badge.fury.io/nu/Pylypeiev.Extension.MinimalPack)
+[![NuGet version](https://badge.fury.io/nu/Pylypeiev.Extensions.MinimalPack.svg)](https://badge.fury.io/nu/Pylypeiev.Extensions.MinimalPack)
 
 
 ## Table of Contents:
