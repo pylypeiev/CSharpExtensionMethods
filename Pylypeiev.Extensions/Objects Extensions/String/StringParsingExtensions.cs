@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class StringParsingExtensions
     {
         /// <summary>Convert to DateTime</summary>
         /// <returns>DateTime if converting succeeded, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static DateTime? ToDateTime(this string str)
         {
             if (DateTime.TryParse(str, out DateTime date))
@@ -20,6 +23,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to DateTime</summary>
         /// <param name="defaultValue">DateTime that will be returned if converting will not succeed</param>
         /// <returns>DateTime if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static DateTime ToDateTime(this string str, DateTime defaultValue)
         {
             if (DateTime.TryParse(str, out DateTime date))
@@ -33,6 +37,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to decimal</summary>
         /// <param name="defaultValue"></param>
         /// <returns>decimal if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static decimal ToDecimal(this string input, decimal defaultValue = 0)
         {
             if (!decimal.TryParse(input, out decimal result))
@@ -46,6 +51,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to double</summary>
         /// <param name="defaultValue"></param>
         /// <returns>double if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static double ToDouble(this string input, double defaultValue = 0)
         {
             if (!double.TryParse(input, out double result))
@@ -59,6 +65,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to float</summary>
         /// <param name="defaultValue"></param>
         /// <returns>float if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static float ToFloat(this string input, float defaultValue = 0)
         {
             if (!float.TryParse(input, out float result))
@@ -72,6 +79,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to int</summary>
         /// <param name="defaultValue"></param>
         /// <returns>int if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static int ToInt(this string input, int defaultValue = 0)
         {
             if (!int.TryParse(input, out int result))
@@ -85,6 +93,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Convert to long</summary>
         /// <param name="defaultValue"></param>
         /// <returns>long if converting succeeded, otherwise - defaultValue</returns>
+        [DebuggerStepThrough]
         public static long ToLong(this string input, long defaultValue = 0)
         {
             if (!long.TryParse(input, out long result))
@@ -99,6 +108,7 @@ namespace Pylypeiev.Extensions
         /// <param name="str">A string to convert.</param>
         /// <param name="encoding">An encoding for conversion. Default is UTF8.</param>
         /// <returns>A byte array. If string is null or empty - empty byte array.</returns>
+        [DebuggerStepThrough]
         public static byte[] ToByteArray(this string str, Encoding encoding = null)
         {
             if (string.IsNullOrEmpty(str))

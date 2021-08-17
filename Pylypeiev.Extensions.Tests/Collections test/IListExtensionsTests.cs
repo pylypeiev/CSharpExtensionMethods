@@ -76,5 +76,39 @@ namespace Pylypeiev.Extensions.Tests
             Assert.Equal(1 * 2 * 3 * 4, permutations.Count);
             Assert.NotEqual(permutations[0], permutations[1]);
         }
+
+        [Fact]
+        public void AsReadOnlyOk()
+        {
+            //Arrange
+            IList<int> list = Enumerable.Range(1, 4).ToList();
+            //Act
+            var readOnly = list.AsReadOnly();
+            //Assert
+            Assert.Equal(list.Count, readOnly.Count);
+        }
+
+
+        [Fact]
+        public void AsReadOnlyOnEmpty()
+        {
+            //Arrange
+            IList<int> list = new List<int>(0);
+            //Act
+            var readOnly = list.AsReadOnly();
+            //Assert
+            Assert.Equal(0, readOnly.Count);
+        }
+
+        [Fact]
+        public void AsReadOnlyOnNull()
+        {
+            //Arrange
+            IList<int> list = new List<int>(0);
+            //Act
+            var readOnly = list.AsReadOnly();
+            //Assert
+            Assert.Equal(0, readOnly.Count);
+        }
     }
 }

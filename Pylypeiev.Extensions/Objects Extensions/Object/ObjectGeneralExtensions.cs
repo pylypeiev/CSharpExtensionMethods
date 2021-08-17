@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class ObjectGeneralExtensions
     {
         /// <summary>Perform action on the object if it not null</summary>
         /// <param name="action">action to perform</param>
+        [DebuggerStepThrough]
         public static void IfNotNull<T>(this T obj, Action<T> action) where T : class
         {
             if (obj != null)
@@ -21,6 +24,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Perform function on the object if it not null</summary>
         /// <param name="func">function to perform</param>
         /// <returns>return function result or default value of the object if it is null</returns>
+        [DebuggerStepThrough]
         public static TResult IfNotNull<T, TResult>(this T obj, Func<T, TResult> func) where T : class
         {
             return obj != null ? func(obj) : default;
@@ -30,6 +34,7 @@ namespace Pylypeiev.Extensions
         /// <param name="func">function to perform</param>
         /// <param name="defaultValue">default value if object is null</param>
         /// <returns>return function result or default value of the object if it is null</returns>
+        [DebuggerStepThrough]
         public static TResult IfNotNull<T, TResult>(this T obj, Func<T, TResult> func, TResult defaultValue) where T : class
         {
             return obj != null ? func(obj) : defaultValue;
@@ -38,6 +43,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Check if object equals to its a default value</summary>
         /// <param name="source"></param>
         /// <returns>True is object equals to its a default value, otherwise false</returns>
+        [DebuggerStepThrough]
         public static bool IsDefaultValue<T>(this T source)
         {
             return source.Equals(default(T));
@@ -47,6 +53,7 @@ namespace Pylypeiev.Extensions
         /// <param name="sequence"></param>
         /// <exception cref="System.ArgumentNullException">object is null</exception>
         /// <returns>true if object is contained in sequence, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsIn<T>(this T obj, params T[] sequence)
         {
             if (obj == null)
@@ -59,6 +66,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Check if object is NOT null</summary>
         /// <returns>true if object is not null, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNotNull<T>(this T obj) where T : class
         {
             return obj != null;
@@ -66,6 +74,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Check if object is null</summary>
         /// <returns>true if object is null, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNull<T>(this T obj) where T : class
         {
             return obj == null;
@@ -73,6 +82,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>like ToString of the object, but not crushes if the object is null</summary>
         /// <returns>ToString of the object, if the object is null - empty string</returns>
+        [DebuggerStepThrough]
         public static string ToStringSafe(this object str)
         {
             return str == null ? "" : str.ToString();
@@ -83,6 +93,7 @@ namespace Pylypeiev.Extensions
         /// </summary>
         /// <param name="tryFunction">function to try to perform</param>
         /// <returns>result of the function or a default value if not succeed </returns>
+        [DebuggerStepThrough]
         public static TResult Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction)
         {
             try
@@ -101,6 +112,7 @@ namespace Pylypeiev.Extensions
         /// <param name="tryFunction">function to try to perform</param>
         /// <param name="catchValue">value to return if not succeed</param>
         /// <returns>result of the function or a catchValue if not succeed </returns>
+        [DebuggerStepThrough]
         public static TResult Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, TResult catchValue)
         {
             try
@@ -117,6 +129,7 @@ namespace Pylypeiev.Extensions
         /// <param name="tryFunction">function to try to perform</param>
         /// <param name="result">result of try function</param>
         /// <returns>return true if the function succeeded and result accordingly, otherwise - false and default value of result</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, out TResult result)
         {
             try
@@ -136,6 +149,7 @@ namespace Pylypeiev.Extensions
         /// <param name="catchValue">value to return if not succeed</param>
         /// <param name="result">result of try function</param>
         /// <returns>return true if the function succeeded and result accordingly, otherwise - false and catchValue</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType, TResult>(this TType obj, Func<TType, TResult> tryFunction, TResult catchValue, out TResult result)
         {
             try
@@ -153,6 +167,7 @@ namespace Pylypeiev.Extensions
         /// <summary>try to perform an action on the object</summary>
         /// <param name="tryAction">action to try to perform</param>
         /// <returns>true if the action succeeded, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType>(this TType obj, Action<TType> tryAction)
         {
             try
@@ -170,6 +185,7 @@ namespace Pylypeiev.Extensions
         /// <param name="tryAction">action to try to perform</param>
         /// <param name="catchAction">action to perform if first action not succeeded </param>
         /// <returns>true if first action succeeded, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool Try<TType>(this TType obj, Action<TType> tryAction, Action<TType> catchAction)
         {
             try
@@ -187,6 +203,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Wraps this object instance into an IEnumerable, consisting of a single item.</summary>
         /// <param name="item"> The instance that will be wrapped.</param>
         /// <returns> An IEnumerable of a single item. </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Yield<T>(this T item)
         {
             yield return item;
@@ -195,6 +212,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Deep copy of object using BinaryFormatter</summary>
         /// <param name="source"> An object to copy</param>
         /// <returns> An deep copy of object of type T</returns>
+        [DebuggerStepThrough]
         public static T DeepCopy<T>(this T source)
         {
             using (var ms = new MemoryStream())

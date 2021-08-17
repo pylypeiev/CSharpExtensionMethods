@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class IEnumerableExtensions
     {
         /// <summary> Add the object top the end of IEnumerable </summary>
         /// <param name="element">object to append</param>
         /// <returns>updated IEnumerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T element)
         {
             foreach (var item in source)
@@ -23,6 +26,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Check if all elements in IEnumerable are equals </summary>
         /// <exception cref="System.ArgumentNullException">enumerable is null</exception>
         /// <returns>true if they are equals, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool AreAllSame<T>(this IEnumerable<T> enumerable)
         {
             if (enumerable == null)
@@ -55,6 +59,7 @@ namespace Pylypeiev.Extensions
         /// </summary>
         /// <param name="enumerable"></param>
         /// <returns>concatenated string</returns>
+        [DebuggerStepThrough]
         public static string Concatenate(this IEnumerable<string> enumerable)
         {
             var sb = new StringBuilder();
@@ -75,6 +80,7 @@ namespace Pylypeiev.Extensions
         /// <exception cref="System.ArgumentNullException">action is null</exception>
         /// <exception cref="System.InvalidOperationException">An element in the collection has been modified</exception>
         /// <returns>this IEnuerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
             if (collection != null)
@@ -91,6 +97,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Check if IEnumerable is empty </summary>
         /// <exception cref="System.ArgumentNullException">IEnumerable is null</exception>
         /// <returns>true if collection is empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
         {
             return !enumerable.Any();
@@ -99,6 +106,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Check if IEnumerable is <strong>NOT</strong> empty </summary>
         /// <exception cref="System.ArgumentNullException">IEnumerable is null</exception>
         /// <returns>true if collection is not empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNotEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Any();
@@ -106,6 +114,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary> Check if IEnumerable is null or empty </summary>
         /// <returns>true if IEnumerable is null or empty, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable?.Any() != true;
@@ -123,6 +132,7 @@ namespace Pylypeiev.Extensions
         /// A string that consists of the elements of values delimited by the separator string.
         /// If values is an empty IEnumerable, the method returns String.Empty.
         /// </returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this IEnumerable<T> source, string separator)
         {
             if (source == null)
@@ -136,6 +146,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Add the object at the beginning of IEnumerable </summary>
         /// <param name="element">object to prepend</param>
         /// <returns>updated IEnumerable</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Prepend<T>(this IEnumerable<T> source, T element)
         {
             yield return element;
@@ -147,6 +158,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary> Shuffle IEnumerable </summary>
         /// <returns> a random shuffled IEnumerable or empty collection if source is null</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
             if (source == null)
@@ -159,6 +171,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Pick a random element from IEnumerable</summary>
         /// <returns> 1 random element of type T, ot default T if collection is null </returns>
+        [DebuggerStepThrough]
         public static T PickRandom<T>(this IEnumerable<T> source)
         {
             if (source == null)
@@ -172,6 +185,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Pick N random elements from IEnumerable</summary>
         /// <param name="count">number of objects of type T to pick</param>
         /// <returns> IEnumerable collecting N random element of type T, or empty enumerable if collection is null </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
             if (source == null)
@@ -184,6 +198,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Safe foreach and more, returns an empty Enumerable if source is null. </summary>
         /// <returns> Source if not null, otherwise Enumerable.Empty </returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ThisOrEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable ?? Enumerable.Empty<T>();

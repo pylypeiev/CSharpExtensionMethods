@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class IListExtensions
     {
         /// <summary> Chunk a list to smaller lists with a maximum capacity of the chunk size</summary>
         /// <param name="chunkSize"> a maximum capacity of the chunk size</param>
         /// <returns>List with chunked lists</returns>
+        [DebuggerStepThrough]
         public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
         {
             if (source == null)
@@ -25,6 +29,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Clone an collection to new IList</summary>
         /// <returns>cloned new IList</returns>
+        [DebuggerStepThrough]
         public static IList<T> Clone<T>(this IList<T> list) where T : ICloneable
         {
             if (list == null)
@@ -45,6 +50,7 @@ namespace Pylypeiev.Extensions
         /// <param name="item"> The object to add</param>
         /// <exception cref="System.NotSupportedException">collection is read only</exception>
         /// <returns>this collection</returns>
+        [DebuggerStepThrough]
         public static TList Push<TList, TItem>(this TList list, TItem item) where TList : IList<TItem>
         {
             if (list == null)
@@ -60,6 +66,7 @@ namespace Pylypeiev.Extensions
         /// Get all permutations for this List. Please use only if you need this, memory and GC is under your responsibility!
         /// </summary>
         /// <returns>all permutations for this List, or empty collection if the list is null</returns>
+        [DebuggerStepThrough]
         public static List<List<T>> GetPermutations<T>(this List<T> list)
         {
             if (list == null)
@@ -84,6 +91,25 @@ namespace Pylypeiev.Extensions
                 }
             }
             return result;
+        }
+
+        /// <summary> Converts collection to read only one </summary>
+        /// <returns>Read only collection wrapping, if list is null than empty collection</returns>
+        [DebuggerStepThrough]
+        public static IList<T> AsReadOnly<T>(this IList<T> list)
+        {
+            if (list == null)
+            {
+#if NET451
+                return new ReadOnlyCollection<T>(new T[0]);
+#else
+                return new ReadOnlyCollection<T>(Array.Empty<T>());
+#endif
+            }
+
+            return list.IsReadOnly
+                        ? list
+                        : new ReadOnlyCollection<T>(list);
         }
     }
 }

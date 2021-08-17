@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -7,10 +7,12 @@ using System.Xml.Serialization;
 
 namespace Pylypeiev.Extensions.Xml
 {
+    [DebuggerStepThrough]
     public static class XmlExtensions
     {
         /// <summary>Convert to Stream</summary>
         /// <returns>xml in stream if succeeded, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static Stream ToStream(this XmlDocument doc)
         {
             if (doc == null)
@@ -31,6 +33,7 @@ namespace Pylypeiev.Extensions.Xml
 
         /// <summary>Convert to XDocument</summary>
         /// <returns>xml in xDocument object if succeeded, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static XDocument ToXDocument(this XmlDocument doc)
         {
             if (doc == null)
@@ -51,6 +54,7 @@ namespace Pylypeiev.Extensions.Xml
 
         /// <summary>Convert to XmlDocument</summary>
         /// <returns>xml in xmlDocument object if succeeded, if object is empty - default, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static XmlDocument ToXmlDocument(this XDocument doc)
         {
             if (doc == null)
@@ -70,6 +74,7 @@ namespace Pylypeiev.Extensions.Xml
 
         /// <summary>Convert to XmlDocument</summary>
         /// <returns>xml in xmlDocument object if succeeded, otherwise - null</returns>
+        [DebuggerStepThrough]
         public static XmlDocument ToXmlDocument(this XElement xElement)
         {
             if (xElement == null)
@@ -99,6 +104,7 @@ namespace Pylypeiev.Extensions.Xml
         /// </summary>
         /// <param name="defaultValue">return object if xml deserialize will not succeed</param>
         /// <returns>deserialized xml if succeeded, otherwise - defaultValue. If this string is null - defaultValue</returns>
+        [DebuggerStepThrough]
         public static T TryXmlDeserialize<T>(this string xmlData, T defaultValue = default)
         {
             if (string.IsNullOrWhiteSpace(xmlData))
@@ -122,6 +128,7 @@ namespace Pylypeiev.Extensions.Xml
 
         /// <summary>Serialize this object to XML via XmlSerializer</summary>
         /// <returns>XML in a string, if the object is null - an empty string</returns>
+        [DebuggerStepThrough]
         public static string XmlSerialize<T>(this T item)
         {
             if (item == null)

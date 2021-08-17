@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class DecimalExtensions
     {
         /// <summary>Returns the absolute value of this number.</summary>
+        [DebuggerStepThrough]
         public static decimal Abs(this decimal value)
         {
             return Math.Abs(value);
         }
 
         /// <summary>Returns the smallest integral value that is greater than or equal to the specified number</summary>
+        [DebuggerStepThrough]
         public static decimal Ceiling(this decimal value)
         {
             return Math.Ceiling(value);
         }
 
         /// <summary>Returns the largest integral value that is greater than or equal to the specified number</summary>
+        [DebuggerStepThrough]
         public static decimal Floor(this decimal value)
         {
             return Math.Floor(value);
@@ -26,6 +31,7 @@ namespace Pylypeiev.Extensions
         /// Calculate percentage from this number
         /// </summary>
         /// <param name="percentage">percentage number</param>
+        [DebuggerStepThrough]
         public static decimal GetPercentage(this decimal value, decimal percentage)
         {
             var percentAsDouble = percentage / 100;
@@ -36,18 +42,21 @@ namespace Pylypeiev.Extensions
         /// <param name="a">lower bound</param>
         /// <param name="b">upper bound</param>
         /// <returns>true if between, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsBetween(this decimal number, decimal a, decimal b)
         {
             return a <= number && number <= b;
         }
 
         /// <summary>Returns the larger of two numbers</summary>
+        [DebuggerStepThrough]
         public static decimal Max(this decimal val1, decimal val2)
         {
             return Math.Max(val1, val2);
         }
 
         /// <summary>Returns the smaller of two numbers</summary>
+        [DebuggerStepThrough]
         public static decimal Min(this decimal val1, decimal val2)
         {
             return Math.Min(val1, val2);
@@ -58,6 +67,7 @@ namespace Pylypeiev.Extensions
         ///  to the nearest even number.
         /// </summary>
         /// <exception cref="System.OverflowException">The result is outside the range</exception>
+        [DebuggerStepThrough]
         public static decimal Round(this decimal d)
         {
             return Math.Round(d);
@@ -69,30 +79,35 @@ namespace Pylypeiev.Extensions
         /// </summary>
         /// <param name="decimals">The number of decimal places in the return value.</param>
         /// <exception cref="System.OverflowException">The result is outside the range</exception>
+        [DebuggerStepThrough]
         public static decimal Round(this decimal d, int decimals)
         {
             return Math.Round(d, decimals);
         }
 
         /// <summary>Add a number to this number </summary>
+        [DebuggerStepThrough]
         public static decimal Plus(this decimal value, decimal value2)
         {
             return value + value2;
         }
 
         /// <summary>Subtract a number from this number </summary>
+        [DebuggerStepThrough]
         public static decimal Minus(this decimal value, decimal value2)
         {
             return value - value2;
         }
 
         /// <summary>Divide this number by given number</summary>
+        [DebuggerStepThrough]
         public static decimal DivideBy(this decimal value, decimal value2)
         {
             return value / value2;
         }
 
         /// <summary>Multiply this number by given number</summary>
+        [DebuggerStepThrough]
         public static decimal MultiplyBy(this decimal value, decimal value2)
         {
             return value * value2;

@@ -25,6 +25,7 @@ C# Extension Methods
 - [decimal](#decimal)
 - [double](#double)
 - [float](#float)
+- [Func](#func)
 - [int](#int)
 - [long](#long)
 - [object](#object)
@@ -49,6 +50,7 @@ C# Extension Methods
 - [AddOrUpdate](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Add an element with provided key to dictionary, if this key is exist - update value
 - [ToTuple](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Convert this dictionary to list of Tuples, where item1 is key and item2 is a value from this dictionary
 - [GetValueOrDefault](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Get an element with provided key if this key is exist, otherwise default value
+- [AsReadOnly](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/DictionaryExtensions.cs) - Wrap a dictionary in read only collection
 
 <a name="icollection"></a>
 
@@ -81,6 +83,7 @@ C# Extension Methods
  - [Clone](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Clone an collection to new IList
  - [Push](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Adds an object to the collection and return this collection for fluent api
  - [GetPermutations](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Get all permutations for this List
+ - [AsReadOnly](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Collections%20extensions/IListExtensions.cs) - Wrap a list in read only collection
 
 ## POCO extension methods (Namespace - Pylypeiev.Extensions):
 
@@ -103,6 +106,12 @@ C# Extension Methods
 - [IsFuture](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this date is future
 - [IsPast](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this date is past
 - [IsDefault](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Check if this DateTime is default, empty value
+- [ToUnixTime](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - convert date to UNIX Epoch time format
+- [TrimToSecond](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Trims millisecond component so that the precision of the resulting time is to the second
+- [TrimToMinute](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Trims the second and millisecond components so that the precision of the resulting time is to the minutes
+- [TrimToHour](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Trims the minute, second and millisecond components so that the precision of the resulting time is to the hour
+- [TrimToDay](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Trims the time components so that the precision of the resulting time is to the day
+- [GetQuarter](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/DateTime/DateTimeExtensions.cs) - Determines the quarter to which the date belongs
 
 <a name="decimal"></a>
 
@@ -148,6 +157,12 @@ C# Extension Methods
 - [Minus](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Subtract a number from this number
 - [DivideBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Divide this number by given number
 - [MultiplyBy](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Float/FloatExtensions.cs) - Multiply this number by given number
+
+<a name="func"></a>
+
+### Func extension methods:
+- [Or](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Func/FuncExtensions.cs) - Combines two Func or Predicates to form a logical OR
+- [And](https://github.com/pylypeiev/CSharpExtensionMethods/blob/master/Pylypeiev.Extensions/Objects%20Extensions/Func/FuncExtensions.cs) - Combines two Func or Predicates to form a logical AND
 
 <a name="int"></a>
 

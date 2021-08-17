@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class DoubleExtensions
     {
         /// <summary>Returns the absolute value of this number.</summary>
+        [DebuggerStepThrough]
         public static double Abs(this double value)
         {
             return Math.Abs(value);
         }
 
         /// <summary>Returns the smallest integral value that is greater than or equal to the specified number</summary>
+        [DebuggerStepThrough]
         public static double Ceiling(this double value)
         {
             return Math.Ceiling(value);
         }
 
         /// <summary>Returns the largest integral value that is greater than or equal to the specified number</summary>
+        [DebuggerStepThrough]
         public static double Floor(this double value)
         {
             return Math.Floor(value);
@@ -26,6 +31,7 @@ namespace Pylypeiev.Extensions
         /// Calculate percentage from this number
         /// </summary>
         /// <param name="percentage">percentage number</param>
+        [DebuggerStepThrough]
         public static double GetPercentage(this double value, double percentage)
         {
             var percentAsDouble = percentage / 100;
@@ -36,18 +42,21 @@ namespace Pylypeiev.Extensions
         /// <param name="a">lower bound</param>
         /// <param name="b">upper bound</param>
         /// <returns>true if between, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsBetween(this double number, double a, double b)
         {
             return a <= number && number <= b;
         }
 
         /// <summary>Returns the larger of two numbers</summary>
+        [DebuggerStepThrough]
         public static double Max(this double val1, double val2)
         {
             return Math.Max(val1, val2);
         }
 
         /// <summary>Returns the smaller of two numbers</summary>
+        [DebuggerStepThrough]
         public static double Min(this double val1, double val2)
         {
             return Math.Min(val1, val2);
@@ -57,6 +66,7 @@ namespace Pylypeiev.Extensions
         ///  Rounds a double value to the nearest integral value, and rounds midpoint values
         ///  to the nearest even number.
         /// </summary>
+        [DebuggerStepThrough]
         public static double Round(this double d)
         {
             return Math.Round(d);
@@ -68,30 +78,35 @@ namespace Pylypeiev.Extensions
         /// </summary>
         /// <param name="doubles">The number of fractional digits in the return value.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">doubles is less than 0 or greater than 15</exception>
+        [DebuggerStepThrough]
         public static double Round(this double d, int doubles)
         {
             return Math.Round(d, doubles);
         }
 
         /// <summary>Add a number to this number </summary>
+        [DebuggerStepThrough]
         public static double Plus(this double value, double value2)
         {
             return value + value2;
         }
 
         /// <summary>Subtract a number from this number </summary>
+        [DebuggerStepThrough]
         public static double Minus(this double value, double value2)
         {
             return value - value2;
         }
 
         /// <summary>Divide this number by given number</summary>
+        [DebuggerStepThrough]
         public static double DivideBy(this double value, double value2)
         {
             return value / value2;
         }
 
         /// <summary>Multiply this number by given number</summary>
+        [DebuggerStepThrough]
         public static double MultiplyBy(this double value, double value2)
         {
             return value * value2;

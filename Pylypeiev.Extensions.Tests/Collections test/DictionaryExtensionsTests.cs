@@ -128,5 +128,38 @@ namespace Pylypeiev.Extensions.Tests
             //Assert
             Assert.Equal("default", value);
         }
+
+        [Fact]
+        public void AsReadOnlyOkTests()
+        {
+            //Arrange
+            var dict = new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } };
+            //Act
+            var readonlyCollection = dict.AsReadOnly();
+            //Assert
+            Assert.Equal(dict.Count, readonlyCollection.Count);
+        }
+
+        [Fact]
+        public void AsReadOnlyOnEmptyCollection()
+        {
+            //Arrange
+            var dict = new Dictionary<string, string> { };
+            //Act
+            var readonlyCollection = dict.AsReadOnly();
+            //Assert
+            Assert.Empty(readonlyCollection);
+        }
+
+        [Fact]
+        public void AsReadOnlyOnNull()
+        {
+            //Arrange
+            Dictionary<string, string> dict = null;
+            //Act
+            var readonlyCollection = dict.AsReadOnly();
+            //Assert
+            Assert.Empty(readonlyCollection);
+        }
     }
 }

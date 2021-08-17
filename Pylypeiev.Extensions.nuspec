@@ -2,14 +2,21 @@
 <package >
   <metadata>
     <id>Pylypeiev.Extensions</id>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <authors>Yakov Pylypeiev</authors>
     <owners>Yakov Pylypeiev</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/pylypeiev/CSharpExtensionMethods</projectUrl>
     <description>My C# Extension methods for collections and POCO objects</description>
-    <releaseNotes>Massive extension check. All extensions covered with tests. Removed unused extensions. Add more null safety</releaseNotes>
+    <releaseNotes>
+	All methods wrapped with DebuggerStepThrough attribute. Added: DateTime.ToUnixTime, DateTime.TrimToSecond,
+	DateTime.TrimToMinute, DateTime.TrimToHour,DateTime.TrimToDay, DateTime.GetQuarter, IList.AsReadOnly,Dictionary.AsReadOnly,
+	Func.Or, Func.And, Predicate.Or, Predicate.Any
+	</releaseNotes>
+	<tags>Extension methods</tags>
+	<title>C# Extension methods</title>
+	<repository  type="git" url="https://github.com/pylypeiev/CSharpExtensionMethods"/>
     <copyright>Copyright 2020</copyright>
     <dependencies>
       <group targetFramework=".NETFramework4.5.1" />

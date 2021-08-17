@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class StringOperationsExtensions
     {
         /// <summary>Remove the number of characters at the start of this string</summary>
         /// <param name="number">number of characters to remove</param>
         /// <exception cref="System.ArgumentOutOfRangeException">number is less than zero or greater than the length of this string</exception>
         /// <returns>substring</returns>
+        [DebuggerStepThrough]
         public static string RemoveFirst(this string str, int number)
         {
             if (string.IsNullOrEmpty(str))
@@ -23,6 +26,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Remove the first character of this string </summary>
         /// <returns>substring without first character</returns>
+        [DebuggerStepThrough]
         public static string RemoveFirstCharacter(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -37,6 +41,7 @@ namespace Pylypeiev.Extensions
         /// <param name="number">number of characters to remove</param>
         /// <exception cref="System.ArgumentOutOfRangeException">number is less than zero or greater than the length of this string</exception>
         /// <returns>substring</returns>
+        [DebuggerStepThrough]
         public static string RemoveLast(this string str, int number)
         {
             if (string.IsNullOrEmpty(str))
@@ -49,6 +54,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Remove the last character of this string</summary>
         /// <returns>substring without last character</returns>
+        [DebuggerStepThrough]
         public static string RemoveLastCharacter(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -61,6 +67,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Reverse the sequence of characters in this string</summary>
         /// <returns> reversed string </returns>
+        [DebuggerStepThrough]
         public static string Reverse(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -79,6 +86,7 @@ namespace Pylypeiev.Extensions
         /// <exception cref="RegexMatchTimeoutException">
         /// The exception that is thrown when the execution time of a regular expression pattern-matching method exceeds its time-out interval.
         /// </exception>
+        [DebuggerStepThrough]
         public static string SplitCamelCase(this string str, TimeSpan? matchTimeout = null)
         {
             if (string.IsNullOrEmpty(str))
@@ -97,6 +105,7 @@ namespace Pylypeiev.Extensions
         /// <summary>
         /// Surround this string with some string
         /// </summary>
+        [DebuggerStepThrough]
         public static string SurroundWith(this string str, string surrounder)
         {
             return surrounder + str + surrounder;
@@ -106,6 +115,7 @@ namespace Pylypeiev.Extensions
         /// Converts the specified string to title case (except for words that are entirely in uppercase).
         /// </summary>
         /// <returns>The specified string converted to title case.</returns>
+        [DebuggerStepThrough]
         public static string ToTitleCase(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -122,6 +132,7 @@ namespace Pylypeiev.Extensions
         ///     start and end of the current string. If no characters can be trimmed from the
         ///     current instance, the method returns the current instance unchanged. If string is null - string.Empty returned
         ///</returns>
+        [DebuggerStepThrough]
         public static string TrimSafe(this string str)
         {
             if (string.IsNullOrWhiteSpace(str))
@@ -133,6 +144,7 @@ namespace Pylypeiev.Extensions
         }
         /// <summary>Performs ToLower() only if input is not null</summary>
         /// <returns>The lowercase equivalent of the current string or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -147,6 +159,7 @@ namespace Pylypeiev.Extensions
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
         //     of the specified culture  or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerSafe(this string input, CultureInfo culture)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -161,6 +174,7 @@ namespace Pylypeiev.Extensions
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to lowercase, using the casing rules
         //     of the invariant culture or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToLowerInvariantSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -173,6 +187,7 @@ namespace Pylypeiev.Extensions
 
         /// <summary>Performs ToUpper() only if input is not null</summary>
         /// <returns>The uppercase equivalent of the current string  or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -187,6 +202,7 @@ namespace Pylypeiev.Extensions
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
         //     of the specified culture. or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperSafe(this string input, CultureInfo culture)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -201,6 +217,7 @@ namespace Pylypeiev.Extensions
         /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>  Returns a copy of this string converted to uppercase, using the casing rules
         //     of the invariant culture or string.Empty if input is null</returns>
+        [DebuggerStepThrough]
         public static string ToUpperInvariantSafe(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))

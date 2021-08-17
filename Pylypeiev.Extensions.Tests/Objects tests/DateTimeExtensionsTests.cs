@@ -120,5 +120,115 @@ namespace Pylypeiev.Extensions.Tests
             //Assert
             Assert.False(isDefault);
         }
+
+        [Fact]
+        public void ToUnixTimeAtEpoch()
+        {
+            //Arrange
+            var date = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            //Act
+            var unix = date.ToUnixTime();
+            //Assert
+            Assert.Equal(0, unix);
+        }
+
+        [Fact]
+        public void ToUnixTimeAfterEpoch()
+        {
+            //Arrange
+            var date = new DateTime(1970, 1, 1, 0, 0, 1, DateTimeKind.Utc);
+            //Act
+            var unix = date.ToUnixTime();
+            //Assert
+            Assert.Equal(1000, unix);
+        }
+
+        [Fact]
+        public void ToUnixTimeBeforeEpoch()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var unix = date.ToUnixTime();
+            //Assert
+            Assert.Equal(-1000, unix);
+        }
+
+
+        [Fact]
+        public void TrimToSecondTest()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var trimmed = date.TrimToSecond();
+            //Assert
+            Assert.Equal(0, trimmed.Millisecond);
+            Assert.Equal(date.Second, trimmed.Second);
+        }
+
+        [Fact]
+        public void TrimToMinuteTest()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var trimmed = date.TrimToMinute();
+            //Assert
+            Assert.Equal(0, trimmed.Millisecond);
+            Assert.Equal(0, trimmed.Second);
+            Assert.Equal(date.Minute, trimmed.Minute);
+        }
+
+        [Fact]
+        public void TrimToHourTest()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var trimmed = date.TrimToHour();
+            //Assert
+            Assert.Equal(0, trimmed.Millisecond);
+            Assert.Equal(0, trimmed.Second);
+            Assert.Equal(0, trimmed.Minute);
+            Assert.Equal(date.Hour, trimmed.Hour);
+        }
+
+        [Fact]
+        public void TrimToDateTest()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var trimmed = date.TrimToDay();
+            //Assert
+            Assert.Equal(0, trimmed.Millisecond);
+            Assert.Equal(0, trimmed.Second);
+            Assert.Equal(0, trimmed.Minute);
+            Assert.Equal(0, trimmed.Hour);
+            Assert.Equal(date.Day, trimmed.Day);
+        }
+
+        [Fact]
+        public void GetQuarterAtEndOfYearTest()
+        {
+            //Arrange
+            var date = new DateTime(1969, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+            //Act
+            var quarter = date.GetQuarter();
+            //Assert
+            Assert.Equal(4, quarter);
+        }
+
+        [Fact]
+        public void GetQuarterAtBeginingOfYearTest()
+        {
+            //Arrange
+            var date = new DateTime(1970, 1, 1, 0, 0, 1, DateTimeKind.Utc);
+            //Act
+            var quarter = date.GetQuarter();
+            //Assert
+            Assert.Equal(1, quarter);
+        }
     }
 }

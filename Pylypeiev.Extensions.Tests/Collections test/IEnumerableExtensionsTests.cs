@@ -188,7 +188,8 @@ namespace Pylypeiev.Extensions.Tests
             //Act
             var newIenumerable = ienumerable.Shuffle();
             //Assert
-            Assert.NotEqual(1, newIenumerable.First());
+            Assert.True(newIenumerable.First() != ienumerable.First() && ienumerable.Last() != newIenumerable.Last());
+
         }
 
         [Fact]

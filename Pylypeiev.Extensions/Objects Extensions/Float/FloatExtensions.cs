@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class FloatExtensions
     {
         /// <summary>Returns the absolute value of this number.</summary>
+        [DebuggerStepThrough]
         public static float Abs(this float value)
         {
             return Math.Abs(value);
@@ -14,6 +17,7 @@ namespace Pylypeiev.Extensions
         /// Calculate percentage from this number
         /// </summary>
         /// <param name="percentage">percentage number</param>
+        [DebuggerStepThrough]
         public static float GetPercentage(this float value, float percentage)
         {
             var percentAsDouble = percentage / 100;
@@ -24,42 +28,49 @@ namespace Pylypeiev.Extensions
         /// <param name="a">lower bound</param>
         /// <param name="b">upper bound</param>
         /// <returns>true if between, otherwise - false</returns>
+        [DebuggerStepThrough]
         public static bool IsBetween(this float number, float a, float b)
         {
             return a <= number && number <= b;
         }
 
         /// <summary>Returns the larger of two numbers</summary>
+        [DebuggerStepThrough]
         public static float Max(this float val1, float val2)
         {
             return Math.Max(val1, val2);
         }
 
         /// <summary>Returns the smaller of two numbers</summary>
+        [DebuggerStepThrough]
         public static float Min(this float val1, float val2)
         {
             return Math.Min(val1, val2);
         }
 
         /// <summary>Add a number to this number </summary>
+        [DebuggerStepThrough]
         public static float Plus(this float value, float value2)
         {
             return value + value2;
         }
 
         /// <summary>Subtract a number from this number </summary>
+        [DebuggerStepThrough]
         public static float Minus(this float value, float value2)
         {
             return value - value2;
         }
 
         /// <summary>Divide this number by given number</summary>
+        [DebuggerStepThrough]
         public static float DivideBy(this float value, float value2)
         {
             return value / value2;
         }
 
         /// <summary>Multiply this number by given number</summary>
+        [DebuggerStepThrough]
         public static float MultiplyBy(this float value, float value2)
         {
             return value * value2;

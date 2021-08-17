@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace Pylypeiev.Extensions
 {
+    [DebuggerStepThrough]
     public static class ArrayExtensions
     {
         /// <summary>
@@ -13,6 +15,7 @@ namespace Pylypeiev.Extensions
         /// index is less than the lower bound of array. -or- length is less than zero. -or-
         /// The sum of index and length is greater than the size of array.
         /// </exception>
+        [DebuggerStepThrough]
         public static void ClearAll<T>(this T[] arr)
         {
             if (arr != null)
@@ -33,6 +36,7 @@ namespace Pylypeiev.Extensions
         /// A string that consists of the elements of values delimited by the separator string.
         /// If values is an empty array, the method returns System.String.Empty.
         /// </returns>
+        [DebuggerStepThrough]
         public static string Join<T>(this T[] array, string separator)
         {
             if (array == null)
@@ -46,6 +50,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Returns a simple string representation of an array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>The <see cref="string"/> representation of the array in format [1, 2, 3] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[] arr)
         {
             if (arr == null)
@@ -75,6 +80,7 @@ namespace Pylypeiev.Extensions
         /// <summary> Returns a simple string representation of a jagged array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>String representation of the array. in format [1, 2, 3] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[][] arr)
         {
             if (arr == null)
@@ -120,6 +126,7 @@ namespace Pylypeiev.Extensions
         /// <summary>Returns a simple string representation of a 2D array.</summary>
         /// <param name="arr">The source array.</param>
         /// <returns>The <see cref="string"/> representation of the array in format [[1,2],[3,4]] and [] if it is null</returns>
+        [DebuggerStepThrough]
         public static string ToArrayString<T>(this T[,] arr)
         {
             if (arr == null)
